@@ -1,11 +1,3 @@
-
---[[
-                                     
-     Steamburn Awesome WM config 3.0 
-     github.com/copycat-killer       
-                                     
---]]
-
 theme                               = {}
 
 themes_dir                          = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
@@ -27,19 +19,6 @@ theme.tasklist_bg_focus             = "#140c0b"
 theme.tasklist_fg_focus             = "#d88166"
 theme.menu_height                   = "16"
 theme.menu_width                    = "140"
-
-theme.layout_txt_tile               = "[t]"
-theme.layout_txt_tileleft           = "[l]"
-theme.layout_txt_tilebottom         = "[b]"
-theme.layout_txt_tiletop            = "[tt]"
-theme.layout_txt_fairv              = "[fv]"
-theme.layout_txt_fairh              = "[fh]"
-theme.layout_txt_spiral             = "[s]"
-theme.layout_txt_dwindle            = "[d]"
-theme.layout_txt_max                = "[m]"
-theme.layout_txt_fullscreen         = "[F]"
-theme.layout_txt_magnifier          = "[M]"
-theme.layout_txt_floating           = "[|]"
 
 theme.submenu_icon                  = themes_dir .. "/icons/submenu.png"
 theme.taglist_squares_sel           = themes_dir .. "/icons/square_sel.png"
@@ -67,7 +46,18 @@ theme.widget_batt                   = themes_dir .. "/icons/bat.png"
 theme.widget_clock                  = themes_dir .. "/icons/clock.png"
 theme.widget_vol                    = themes_dir .. "/icons/spkr.png"
 
--- lain related
+theme.layout_txt_tile               = "[t]"
+theme.layout_txt_tileleft           = "[l]"
+theme.layout_txt_tilebottom         = "[b]"
+theme.layout_txt_tiletop            = "[tt]"
+theme.layout_txt_fairv              = "[fv]"
+theme.layout_txt_fairh              = "[fh]"
+theme.layout_txt_spiral             = "[s]"
+theme.layout_txt_dwindle            = "[d]"
+theme.layout_txt_max                = "[m]"
+theme.layout_txt_fullscreen         = "[F]"
+theme.layout_txt_magnifier          = "[M]"
+theme.layout_txt_floating           = "[|]"
 theme.layout_txt_termfair           = "[termfair]"
 theme.layout_txt_uselessfair        = "[fair]"
 theme.layout_txt_uselessfairh       = "[fairh]"
