@@ -16,8 +16,8 @@ end
 
 for s = 1, screen.count() do
   result[s] = {}
-  result[s].widget = wibox.widget.textbox(
-    beautiful["layout_txt_" .. awful.layout.getname(awful.layout.get(s))])
+  result[s].widget = wibox.widget.textbox("-")
+  updatelayoutbox(result[s].widget, s)
   awful.tag.attached_connect_signal(
     s, "property::selected", function ()
       updatelayoutbox(result[s].widget, s)
