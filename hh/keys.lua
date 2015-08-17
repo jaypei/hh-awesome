@@ -2,10 +2,7 @@
 require("awful.layout")
 require("awful.tag")
 
-local pairs         = pairs
-local type          = type
-local table         = table
-local math          = math
+local G             = _G
 local client        = client
 local mouse         = mouse
 local awesome       = awesome
@@ -27,56 +24,25 @@ local gexec   = util.gexec
 
 module("hh.keys")
 
-local K = {
-  keys = {},
-  client_keys = {},
-  btns = {}
-}
-
-local function reg_key_map(key_map, key_def)
-  for k, v in pairs(key_def) do
-    if type(k) == "number" then
-      table.insert(key_map, v)
-    else
-      key_map[k] = v
-    end
-  end
-end
-
-function K:def_btn(mod_key, btn, fn)
-  reg_key_map(self.btns, awful.button(mod_key, btn, fn))
-end
-
-function K:def_key(mod_key, key, fn)
-  reg_key_map(self.keys, awful.key(mod_key, key, fn))
-end
-
-function K:def_client_key(mod_key, key, fn)
-  reg_key_map(self.client_keys, awful.key(mod_key, key, fn))
-end
-
-function K:register()
-  root.buttons(self.btns)
-  root.keys(self.keys)
-end
-
-function K:get_client_keys()
-  return self.client_keys
-end
+--------------------------------------------------
+-- key-maps
+--------------------------------------------------
+global_keys = util.KeyMap:new()
+global_client_keys = util.KeyMap:new()
 
 --------------------------------------------------
 -- Mouse buttons
 --------------------------------------------------
-K:def_btn({}, 3, function () menu.main:toggle() end)
+global_keys:def_btn({}, 3, function () menu.main:toggle() end)
 
 --------------------------------------------------
 -- key-bindings about tag
 --------------------------------------------------
-K:def_key({ modkey }, "Escape", awful.tag.history.restore)
+global_keys:def_key({ modkey }, "Escape", awful.tag.history.restore)
 
 for i = 1, 9 do
   -- switch tag
-  K:def_key({ modkey }, "#" .. i+9, function ()
+  global_keys:def_key({ modkey }, "#" .. i+9, function ()
       local lscreen = mouse.screen
       local tag = awful.tag.gettags(lscreen)[i]
       if tag then
@@ -84,7 +50,7 @@ for i = 1, 9 do
       end
   end)
   -- Toggle tag
-  K:def_key({ modkey, "Control" }, "#" .. i+9, function ()
+  global_keys:def_key({ modkey, "Control" }, "#" .. i+9, function ()
       local lscreen = mouse.screen
       local tag = awful.tag.gettags(lscreen)[i]
       if tag then
@@ -92,7 +58,7 @@ for i = 1, 9 do
       end
   end)
   -- Move client to tag
-  K:def_key({ modkey, "Shift" }, "#" .. i+9, function ()
+  global_keys:def_key({ modkey, "Shift" }, "#" .. i+9, function ()
       if client.focus then
         local tag = awful.tag.gettags(client.focus.screen)[i]
         if tag then
@@ -101,7 +67,7 @@ for i = 1, 9 do
       end
   end)
   -- clone tag
-  K:def_key({ modkey, "Control", "Shift" }, "#" .. i+9,
+  global_keys:def_key({ modkey, "Control", "Shift" }, "#" .. i+9,
     function ()
       if client.focus then
         local tag = awful.tag.gettags(client.focus.screen)[i]
@@ -115,19 +81,19 @@ end
 --------------------------------------------------
 -- Layout switch & manipulation
 --------------------------------------------------
-K:def_key({ modkey }, "j", function ()
+global_keys:def_key({ modkey }, "j", function ()
     awful.client.focus.byidx( 1)
     if client.focus then client.focus:raise() end
 end)
-K:def_key({ modkey }, "n", function ()
+global_keys:def_key({ modkey }, "n", function ()
     awful.client.focus.byidx( 1)
     if client.focus then client.focus:raise() end
 end)
-K:def_key({ modkey }, "k", function ()
+global_keys:def_key({ modkey }, "k", function ()
     awful.client.focus.byidx(-1)
     if client.focus then client.focus:raise() end
 end)
-K:def_key({ modkey }, "p", function ()
+global_keys:def_key({ modkey }, "p", function ()
     awful.client.focus.byidx(-1)
     if client.focus then client.focus:raise() end
 end)
@@ -137,60 +103,71 @@ cyclefocus.key({ "Mod1", }, "Tab", 1, {
     keys = {'Tab', 'ISO_Left_Tab'}
 })
 
-K:def_key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end)
-K:def_key({ modkey, "Shift"   }, "n", function () awful.client.swap.byidx(  1)    end)
-K:def_key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end)
-K:def_key({ modkey, "Shift"   }, "p", function () awful.client.swap.byidx( -1)    end)
-K:def_key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end)
-K:def_key({ modkey, "Control" }, "n", function () awful.screen.focus_relative( 1) end)
-K:def_key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end)
-K:def_key({ modkey, "Control" }, "p", function () awful.screen.focus_relative(-1) end)
-K:def_key({ modkey,           }, "u", awful.client.urgent.jumpto)
-K:def_key({ modkey,           }, "Tab", function ()
+global_keys:def_key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end)
+global_keys:def_key({ modkey, "Shift"   }, "n", function () awful.client.swap.byidx(  1)    end)
+global_keys:def_key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end)
+global_keys:def_key({ modkey, "Shift"   }, "p", function () awful.client.swap.byidx( -1)    end)
+global_keys:def_key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end)
+global_keys:def_key({ modkey, "Control" }, "n", function () awful.screen.focus_relative( 1) end)
+global_keys:def_key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end)
+global_keys:def_key({ modkey, "Control" }, "p", function () awful.screen.focus_relative(-1) end)
+global_keys:def_key({ modkey,           }, "u", awful.client.urgent.jumpto)
+global_keys:def_key({ modkey,           }, "Tab", function ()
     awful.client.focus.history.previous()
     if client.focus then
       client.focus:raise()
     end
 end)
-K:def_key({ modkey,           }, "space", function () awful.layout.inc(hh_tag.layouts,  1) end)
-K:def_key({ modkey, "Shift"   }, "space", function () awful.layout.inc(hh_tag.layouts, -1) end)
+global_keys:def_key({ modkey,           }, "space", function () awful.layout.inc(hh_tag.layouts,  1) end)
+global_keys:def_key({ modkey, "Shift"   }, "space", function () awful.layout.inc(hh_tag.layouts, -1) end)
 
 
 --------------------------------------------------
 -- client keys
 --------------------------------------------------
-K:def_client_key({ modkey            }, "f", function (c) c.fullscreen = not c.fullscreen end)
-K:def_client_key({ modkey, "Shift"   }, "c", function (c) c:kill() end)
-K:def_client_key({ modkey, "Control" }, "space", awful.client.floating.toggle)
-K:def_client_key({ modkey, "Control" }, "Return",
+global_client_keys:def_key({ modkey            }, "f", function (c) c.fullscreen = not c.fullscreen end)
+global_client_keys:def_key({ modkey, "Shift"   }, "c", function (c) c:kill() end)
+global_client_keys:def_key({ modkey, "Control" }, "space", awful.client.floating.toggle)
+global_client_keys:def_key({ modkey, "Control" }, "Return",
   function (c) c:swap(awful.client.getmaster()) end)
-K:def_client_key({ modkey }, "o", awful.client.movetoscreen)
-K:def_client_key({ modkey }, "t", function (c) c.ontop = not c.ontop end)
-K:def_client_key({ modkey }, "n", function (c) c.minimized = true end)
-K:def_client_key({ modkey }, "m",
+global_client_keys:def_key({ modkey }, "o", awful.client.movetoscreen)
+global_client_keys:def_key({ modkey }, "t", function (c) c.ontop = not c.ontop end)
+global_client_keys:def_key({ modkey }, "n", function (c) c.minimized = true end)
+global_client_keys:def_key({ modkey }, "m",
   function (c)
     c.maximized_horizontal = not c.maximized_horizontal
     c.maximized_vertical   = not c.maximized_vertical
-  end)
+end)
+
+
+clientbuttons = awful.util.table.join(
+    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
+    awful.button({ modkey }, 1, awful.mouse.client.move),
+    awful.button({ modkey }, 3, awful.mouse.client.resize))
+
+global_client_keys:def_btn({ }, 1, function (c) client.focus = c; c:raise() end)
+global_client_keys:def_btn({ modkey }, 1, awful.mouse.client.move)
+global_client_keys:def_btn({ modkey }, 3, awful.mouse.client.resize)
 
 --------------------------------------------------
 -- helpers
 --------------------------------------------------
-K:def_key({ modkey, "Control" }, "r", awesome.restart)
-K:def_key({ modkey }, "e", function () util.clip_translate() end)
-K:def_key({ modkey }, "Return", function () exec(config.terminal) end)
-K:def_key({ modkey }, "a", function () exec("shutter -s -e") end)
-K:def_key({ modkey, "Control" }, "n", awful.client.restore)
-K:def_key({ modkey }, "r", function () gexec("rofi -show run") end)
-K:def_key({ modkey }, "w", function () gexec("rofi -show window") end)
-K:def_key({ modkey, "Shift" }, "q", function ()
+global_keys:def_key({ modkey, "Control" }, "r", awesome.restart)
+global_keys:def_key({ modkey }, "e", function () util.clip_translate() end)
+global_keys:def_key({ modkey }, "Return", function () exec(config.terminal) end)
+global_keys:def_key({ modkey }, "a", function () exec("shutter -s -e") end)
+global_keys:def_key({ modkey, "Control" }, "n", awful.client.restore)
+global_keys:def_key({ modkey }, "r", function () gexec("rofi -show run") end)
+global_keys:def_key({ modkey }, "w", function () gexec("rofi -show window") end)
+global_keys:def_key({ modkey, "Shift" }, "q", function ()
     awful.util.spawn("gnome-session-quit")
 end)
-K:def_key({ modkey, "Shift"   }, "q",      awesome.quit)
+global_keys:def_key({ modkey, "Shift"   }, "q",      awesome.quit)
 
 
-K:register()
-clientkeys = K:get_client_keys()
+root.buttons(global_keys.buttons)
+root.keys(global_keys.keys)
+
 
 --   awful.key({ modkey }, "x", function ()
 --       awful.prompt.run({ prompt = "Run Lua code: " },

@@ -3,22 +3,24 @@
 -- github.com/jaypei/hh-awesome
 --
 
+local G       = _G
+local class   = require("middleclass/middleclass")
 local awful = require("awful")
 awful.util = require("awful.util")
 local config = require("config")
 
-local print = print
-
 module("hh.util")
 
--- Disable cursor animation:
+--------------------------------------------------
+-- Execute functions
+--------------------------------------------------
 
 local oldspawn = awful.util.spawn
 awful.util.spawn = function (s)
   oldspawn(s, false)
 end
 
-exec   = function (s) oldspawn(s, false) end
+exec  = function (s) oldspawn(s, false) end
 sexec = awful.util.spawn_with_shell
 
 function run_once(cmd)
@@ -45,4 +47,32 @@ function clip_translate()
       awful.util.spawn(
         config.dotfile_dir .. "bin/trans.sh \"" .. clip .. "\"", false)
     end
+end
+
+--------------------------------------------------
+-- KeyMap
+--------------------------------------------------
+KeyMap = class('Key')
+
+function KeyMap:initialize(sweetness)
+  self.keys = {}
+  self.buttons = {}
+end
+
+function KeyMap:def_btn(mod_key, btn, fn)
+  self:reg_key_map(self.buttons, awful.button(mod_key, btn, fn))
+end
+
+function KeyMap:def_key(mod_key, key, fn)
+  self:reg_key_map(self.keys, awful.key(mod_key, key, fn))
+end
+
+function KeyMap:reg_key_map(key_map, key_def)
+  for k, v in G.pairs(key_def) do
+    if G.type(k) == "number" then
+      G.table.insert(key_map, v)
+    else
+      key_map[k] = v
+    end
+  end
 end

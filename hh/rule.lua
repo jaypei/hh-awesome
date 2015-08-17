@@ -36,9 +36,8 @@ awful_rules.rules = {
       border_width = beautiful.border_width,
       border_color = beautiful.border_normal,
       focus = awful.client.focus.filter,
-      keys = hh_keys.clientkeys,
-      -- buttons = exz_keys.clientbuttons,
-      buttons = clientbuttons,
+      keys = hh_keys.global_client_keys.keys,
+      buttons = hh_keys.global_client_keys.buttons,
       size_hints_honor = false
     }
   },
