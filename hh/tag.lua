@@ -30,9 +30,9 @@ tags = {
   names  = { "1:TERM", "2:TERM", "3:CODE",
              "4:DOC", "5:QTALK", "6:FILE",
              "7:VM", "8:MAIL", "9:WEB" },
-  layout = { layouts[2], layouts[2], layouts[2],
+  layout = { layouts[3], layouts[3], layouts[3],
              layouts[2], layouts[2], layouts[4],
-             layouts[3], layouts[3], layouts[5] }
+             layouts[3], layouts[3], layouts[2] }
 }
 
 for s = 1, screen.count() do
