@@ -64,4 +64,14 @@ theme.layout_txt_uselessfairh       = "[fairh]"
 theme.layout_txt_uselessdwindle     = "[dwindle]"
 theme.layout_txt_uselesstile        = "[tile]"
 
+theme.vol                           = themes_dir .. "/icons/vol.png"
+theme.vol_low                       = themes_dir .. "/icons/vol_low.png"
+theme.vol_no                        = themes_dir .. "/icons/vol_no.png"
+theme.vol_mute                      = themes_dir .. "/icons/vol_mute.png"
+theme.widget_bg                     = themes_dir .. "/icons/widget_bg.png"
+theme.ac                            = themes_dir .. "/icons/ac.png"
+theme.bat                           = themes_dir .. "/icons/bat.png"
+theme.bat_low                       = themes_dir .. "/icons/bat_low.png"
+theme.bat_no                        = themes_dir .. "/icons/bat_no.png"
+
 return theme
