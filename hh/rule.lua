@@ -41,9 +41,17 @@ awful_rules.rules = {
       size_hints_honor = false
     }
   },
+  -- urxvt
   {
     rule = { class = "URxvt" },
     properties = { opacity = 0.95 }
+  },
+  -- nemo
+  {
+    rule = { class = "Nemo", instance = "desktop_window" },
+    callback = function (c)
+      c.hidden = true
+    end
   },
   -- floating
   {
@@ -75,6 +83,13 @@ awful_rules.rules = {
   },
   {
     rule = { class = "QunarIM", name = "群设置" },
+    properties = {
+      floating = true
+    },
+    callback = awful_placement.centered
+  },
+  {
+    rule = { class = "QunarIM", name = "设置" },
     properties = {
       floating = true
     },
