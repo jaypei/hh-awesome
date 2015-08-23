@@ -49,6 +49,10 @@ function clip_translate()
     end
 end
 
+function lock_screen()
+  awful.util.spawn(config.dotfile_dir .. "bin/lock-screen.sh")
+end
+
 --------------------------------------------------
 -- KeyMap
 --------------------------------------------------
