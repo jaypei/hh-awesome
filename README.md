@@ -9,6 +9,7 @@ Useful awesome wm config framework.
 * rofi
 * shutter
 * slock
+* alsa-utils
 
 
 # Usage
