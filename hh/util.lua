@@ -7,7 +7,7 @@ local G       = _G
 local class   = require("middleclass/middleclass")
 local awful = require("awful")
 awful.util = require("awful.util")
-local config = require("config")
+local config = require("etc/config")
 
 module("hh.util")
 

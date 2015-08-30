@@ -1,7 +1,7 @@
 
 local screen = screen
 local mouse = mouse
-local config = require("config")
+local config = require("etc/config")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local awful_rules = require("awful.rules")

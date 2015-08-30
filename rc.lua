@@ -9,16 +9,15 @@
 --  $ ln -s /path/to/hh-awesome ~/.config/awesome
 --
 
-local config   = require("config")
+local config   = require("etc/config")
 require("awful.autofocus")
 local lain     = require("lain")
 lain.helpers   = require("lain.helpers")
 first_line     = lain.helpers.first_line
-local awful    = require("awful")
 local notify   = require("hh.notify")
 notify.setup_runtime_errors_handler()
--- Java GUI's fix:
-awful.util.spawn_with_shell("wmname LG3D")
+
+require("hh.startups")
 require("hh.theme")
 require("hh.tag")
 require("hh.rule")
@@ -26,7 +25,7 @@ require("hh.wibox")
 local hh_keys = require("hh.keys")
 require("hh.signal")
 
--- load 
+-- Load hhrc
 package.path = package.path .. ';' ..
   config.hh_dotfile_dir ..
   '/?.lua;'

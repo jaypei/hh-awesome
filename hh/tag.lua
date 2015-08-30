@@ -5,7 +5,7 @@ awful.layout  = require("awful.layout")
 awful.tag     = require("awful.tag")
 local ipairs  = ipairs
 local lain    = require("lain")
-local config  = require("config")
+local config  = require("etc/config")
 -- local exz_layout_coding = require("exz.layout.coding")
 -- local exz_layout_chrome = require("exz.layout.chrome")
 

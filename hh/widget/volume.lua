@@ -3,7 +3,7 @@ local lain      = require("lain")
 local markup    = require("hh.widget.markup").markup
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
-local config    = require("config")
+local config    = require("etc/config")
 
 blue   = beautiful.fg_focus
 red    = "#EB8F8F"
