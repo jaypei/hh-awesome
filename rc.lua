@@ -2,15 +2,9 @@
 -- Author: jaypei <jaypei97159@gmail.com>
 -- github.com/jaypei/hh-awesome
 --
--- Dependicies
--- Usage:
---  $ pacman -S unclutter rofi
---  
---  $ ln -s /path/to/hh-awesome ~/.config/awesome
---
 
-local config   = require("etc/config")
 require("awful.autofocus")
+local config   = require("etc/config")
 local lain     = require("lain")
 lain.helpers   = require("lain.helpers")
 first_line     = lain.helpers.first_line
@@ -22,7 +16,7 @@ require("hh.theme")
 require("hh.tag")
 require("hh.rule")
 require("hh.wibox")
-local hh_keys = require("hh.keys")
+local hh_keys  = require("hh.keys")
 require("hh.signal")
 
 -- Load hhrc

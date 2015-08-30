@@ -14,5 +14,5 @@ return {
   browser         = "dwb",
   browser2        = "firefox",
   graphics        = "gimp",
-  screen_padding  = { top=3, right=3, bottom=3, left=3 }
+  screen_padding  = { top=6, right=6, bottom=6, left=6 }
 }

@@ -3,28 +3,29 @@ theme                               = {}
 themes_dir                          = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
 theme.wallpaper                     = themes_dir .. "/wall.png"
 
+theme.useless_gap_width             = 6
+
 theme.font                          = "Source Code Pro 10.5"
-theme.fg_normal                     = "#e2ccb0"
-theme.fg_focus                      = "#d88166"
+theme.fg_normal                     = "#00bfff"
+theme.fg_focus                      = "#da70d6"
 theme.fg_urgent                     = "#CC9393"
-theme.bg_normal                     = "#140c0b"
-theme.bg_focus                      = "#140c0b"
+theme.bg_normal                     = "#000000"
+theme.bg_focus                      = "#550022"
 theme.bg_urgent                     = "#2a1f1e"
-theme.border_width                  = 1
+theme.taglist_bg_focus              = "#000000"
+theme.tasklist_bg_focus             = "#000000"
+theme.border_width                  = 2
 theme.border_normal                 = "#302627"
-theme.border_focus                  = "#c2745b"
+theme.border_focus                  = "#550022"
 theme.border_marked                 = "#CC9393"
-theme.taglist_fg_focus              = "#d88166"
-theme.tasklist_bg_focus             = "#140c0b"
-theme.tasklist_fg_focus             = "#d88166"
-theme.menu_height                   = "16"
-theme.menu_width                    = "140"
+theme.menu_height                   = 16
+theme.menu_width                    = 140
 
 theme.submenu_icon                  = themes_dir .. "/icons/submenu.png"
 theme.taglist_squares_sel           = themes_dir .. "/icons/square_sel.png"
 theme.taglist_squares_unsel         = themes_dir .. "/icons/square_unsel.png"
 
-theme.tasklist_disable_icon         = true
+theme.tasklist_disable_icon         = false
 theme.tasklist_floating             = ""
 theme.tasklist_maximized_horizontal = ""
 theme.tasklist_maximized_vertical   = ""

@@ -6,8 +6,6 @@ awful.tag     = require("awful.tag")
 local ipairs  = ipairs
 local lain    = require("lain")
 local config  = require("etc/config")
--- local exz_layout_coding = require("exz.layout.coding")
--- local exz_layout_chrome = require("exz.layout.chrome")
 
 module("hh.tag")
 
@@ -20,10 +18,8 @@ layouts = {
   awful.layout.suit.floating,         -- 1 
   lain.layout.uselessfair.horizontal, -- 2
   lain.layout.uselesstile,            -- 3
-  lain.layout.uselessfair,            -- 4
-  lain.layout.termfair,               -- 5
-  lain.layout.uselesspiral.dwindle,   -- 6
-  exz_layout_chrome                   -- 7
+  lain.layout.uselessfair             -- 4
+  -- exz_layout_chrome                   -- 5
 }
 
 tags = {
