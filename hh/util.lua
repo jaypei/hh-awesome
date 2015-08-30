@@ -45,12 +45,12 @@ function clip_translate()
     clip = awful.util.pread("xclip -o")
     if clip then
       awful.util.spawn(
-        config.dotfile_dir .. "bin/trans.sh \"" .. clip .. "\"", false)
+        config.dotfile_dir .. "/bin/trans.sh \"" .. clip .. "\"", false)
     end
 end
 
 function lock_screen()
-  awful.util.spawn(config.dotfile_dir .. "bin/lock-screen.sh")
+  awful.util.spawn(config.dotfile_dir .. "/bin/lock-screen.sh")
 end
 
 --------------------------------------------------

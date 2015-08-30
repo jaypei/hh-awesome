@@ -165,9 +165,6 @@ global_keys:def_key({ modkey, "Shift" }, "q", function ()
 end)
 global_keys:def_key({ modkey }, "z", function () scratch.drop(config.terminal) end)
 
-root.buttons(global_keys.buttons)
-root.keys(global_keys.keys)
-
 
 --   awful.key({ modkey }, "x", function ()
 --       awful.prompt.run({ prompt = "Run Lua code: " },
