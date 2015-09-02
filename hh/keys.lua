@@ -85,15 +85,7 @@ global_keys:def_key({ modkey }, "j", function ()
     awful.client.focus.byidx( 1)
     if client.focus then client.focus:raise() end
 end)
-global_keys:def_key({ modkey }, "n", function ()
-    awful.client.focus.byidx( 1)
-    if client.focus then client.focus:raise() end
-end)
 global_keys:def_key({ modkey }, "k", function ()
-    awful.client.focus.byidx(-1)
-    if client.focus then client.focus:raise() end
-end)
-global_keys:def_key({ modkey }, "p", function ()
     awful.client.focus.byidx(-1)
     if client.focus then client.focus:raise() end
 end)
@@ -163,7 +155,12 @@ global_keys:def_key({ modkey }, "w", function () gexec("rofi -show window") end)
 global_keys:def_key({ modkey, "Shift" }, "q", function ()
     awful.util.spawn("gnome-session-quit")
 end)
-global_keys:def_key({ modkey }, "z", function () scratch.drop(config.terminal) end)
+global_keys:def_key({ modkey }, "z", function ()
+    scratch.drop(config.terminal, "bottom", "center", 1, 0.5, true)
+end)
+global_keys:def_key({ modkey }, "n", function ()
+    scratch.drop(config.file_explorer, "center", "center", 0.75, 0.75, true)
+end)
 
 
 --   awful.key({ modkey }, "x", function ()

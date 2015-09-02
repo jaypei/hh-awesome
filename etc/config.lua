@@ -9,6 +9,7 @@ return {
   modkey          = "Mod4",
   altkey          = "Mod1",
   terminal        = "urxvt",
+  file_explorer   = "nemo",
   editor          = os.getenv("EDITOR") or "emacs -nw",
   gui_editor      = "emacs",
   browser         = "dwb",
