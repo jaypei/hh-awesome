@@ -24,3 +24,9 @@ Useful awesome wm config framework.
 
         echo "awesome.restart()" | awesome-client
 
+# Screenshots
+
+![wall.png] (https://raw.githubusercontent.com/wiki/jaypei/hh-awesome/screenshots/wall.png)
+![terminals.png] (https://raw.githubusercontent.com/wiki/jaypei/hh-awesome/screenshots/terminals.png)
+![drop.png] (https://raw.githubusercontent.com/wiki/jaypei/hh-awesome/screenshots/drop.png)
+
