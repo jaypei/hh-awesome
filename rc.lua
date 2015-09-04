@@ -20,9 +20,10 @@ local hh_keys  = require("hh.keys")
 require("hh.signal")
 
 -- Load hhrc
-package.path = package.path .. ';' ..
+package.path =
   config.hh_dotfile_dir ..
-  '/?.lua;'
+  '/?.lua;' .. ';' ..
+  package.path
 if lain.helpers.file_exists(config.hh_dotfile_dir .. "/hhrc.lua") then
   require("hhrc")
 end
