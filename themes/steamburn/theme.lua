@@ -3,7 +3,7 @@ theme                               = {}
 themes_dir                          = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
 theme.wallpaper                     = themes_dir .. "/wall.png"
 
-theme.useless_gap_width             = 8
+theme.useless_gap_width             = 15
 
 theme.font                          = "Source Code Pro 10.5"
 theme.fg_normal                     = "#cdcdcd"
@@ -14,7 +14,7 @@ theme.bg_focus                      = "#000000"
 theme.bg_urgent                     = "#2a1f1e"
 theme.taglist_bg_focus              = "png:" .. themes_dir .. "/icons/taglist_bg_focus.png"
 theme.border_width                  = 1
-theme.border_normal                 = "#48cccc"
+theme.border_normal                 = "#3c535b"
 theme.border_focus                  = "#0099cc"
 theme.border_marked                 = "#50ff00"
 theme.menu_height                   = 16
@@ -25,7 +25,7 @@ theme.wibox_border                  = "#000000"
 
 theme.submenu_icon                  = themes_dir .. "/icons/submenu.png"
 -- theme.taglist_squares_sel           = themes_dir .. "/icons/square_sel.png"
-theme.taglist_squares_unsel         = themes_dir .. "/icons/square_unsel.png"
+theme.taglist_squares_unsel         = themes_dir .. "/icons/square_sel.png"
 
 theme.tasklist_disable_icon         = false
 theme.tasklist_floating             = ""
