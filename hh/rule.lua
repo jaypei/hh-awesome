@@ -98,10 +98,6 @@ awful_rules.rules = {
   -- aliwangwang
   {
     rule = { class = "AliWangWang" },
-    properties = {
-      floating = true,
-      border_width = 0
-    },
     callback = make_move_client_tag(6)
   },
   -- virtualbox

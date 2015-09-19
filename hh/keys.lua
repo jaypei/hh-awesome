@@ -131,15 +131,14 @@ global_client_keys:def_key({ modkey }, "m",
     c.maximized_vertical   = not c.maximized_vertical
 end)
 
-
-clientbuttons = awful.util.table.join(
-    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
-    awful.button({ modkey }, 1, awful.mouse.client.move),
-    awful.button({ modkey }, 3, awful.mouse.client.resize))
-
 global_client_keys:def_btn({ }, 1, function (c) client.focus = c; c:raise() end)
 global_client_keys:def_btn({ modkey }, 1, awful.mouse.client.move)
 global_client_keys:def_btn({ modkey }, 3, awful.mouse.client.resize)
+
+global_client_keys:def_key({ modkey }, "Right", function () awful.tag.incmwfact( 0.01)    end)
+global_client_keys:def_key({ modkey }, "Left",  function () awful.tag.incmwfact(-0.01)    end)
+global_client_keys:def_key({ modkey }, "Down",  function () awful.client.incwfact( 0.01)  end)
+global_client_keys:def_key({ modkey }, "Up",    function () awful.client.incwfact(-0.01)  end)
 
 --------------------------------------------------
 -- helpers
