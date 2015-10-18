@@ -43,18 +43,36 @@ global_keys:def_key({ modkey }, "Escape", awful.tag.history.restore)
 for i = 1, 9 do
   -- switch tag
   global_keys:def_key({ modkey }, "#" .. i+9, function ()
-      local lscreen = mouse.screen
-      local tag = awful.tag.gettags(lscreen)[i]
-      if tag then
-        awful.tag.viewonly(tag)
+      if config.sync_select_ws then
+        for s = 1, screen.count() do
+          local tag = awful.tag.gettags(s)[i]
+          if tag then
+            awful.tag.viewonly(tag)
+          end
+        end
+      else
+        local lscreen = mouse.screen
+        local tag = awful.tag.gettags(lscreen)[i]
+        if tag then
+          awful.tag.viewonly(tag)
+        end
       end
   end)
   -- Toggle tag
   global_keys:def_key({ modkey, "Control" }, "#" .. i+9, function ()
-      local lscreen = mouse.screen
-      local tag = awful.tag.gettags(lscreen)[i]
-      if tag then
-        awful.tag.viewtoggle(tag)
+      if config.sync_select_ws then
+        for s = 1, screen.count() do
+          local tag = awful.tag.gettags(s)[i]
+          if tag then
+            awful.tag.viewtoggle(tag)
+          end
+        end
+      else
+        local lscreen = mouse.screen
+        local tag = awful.tag.gettags(lscreen)[i]
+        if tag then
+          awful.tag.viewtoggle(tag)
+        end
       end
   end)
   -- Move client to tag

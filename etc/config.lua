@@ -15,5 +15,6 @@ return {
   browser         = "dwb",
   browser2        = "firefox",
   graphics        = "gimp",
+  sync_select_ws  = true,
   screen_padding  = { top=5, right=5, bottom=5, left=5 }
 }
