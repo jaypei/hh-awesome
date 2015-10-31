@@ -23,7 +23,7 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = false
+    local titlebars_enabled = true
     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
         local buttons = awful.util.table.join(
                 awful.button({ }, 1, function()
@@ -51,7 +51,7 @@ client.connect_signal("manage", function (c, startup)
 
         local middle_layout = wibox.layout.flex.horizontal()
         local title = awful.titlebar.widget.titlewidget(c)
-        title:set_align("center")
+        title:set_align("left")
         middle_layout:add(title)
         middle_layout:buttons(buttons)
 
@@ -60,7 +60,7 @@ client.connect_signal("manage", function (c, startup)
         layout:set_right(right_layout)
         layout:set_middle(middle_layout)
 
-        awful.titlebar(c):set_widget(layout)
+        awful.titlebar(c, {size=15}):set_widget(layout)
     end
 end)
 

@@ -28,5 +28,8 @@ if lain.helpers.file_exists(config.hh_dotfile_dir .. "/hhrc.lua") then
   require("hhrc")
 end
 
+-- monky patches
+require("eminent")
+
 root.buttons(hh_keys.global_keys.buttons)
 root.keys(hh_keys.global_keys.keys)

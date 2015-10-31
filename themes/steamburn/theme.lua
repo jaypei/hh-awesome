@@ -13,12 +13,18 @@ theme.bg_normal                     = "#000000"
 theme.bg_focus                      = "#000000"
 theme.bg_urgent                     = "#2a1f1e"
 theme.taglist_bg_focus              = "png:" .. themes_dir .. "/icons/taglist_bg_focus.png"
-theme.border_width                  = 2
+theme.border_width                  = 1
 theme.border_normal                 = "#3c535b"
 theme.border_focus                  = "#0099cc"
 theme.border_marked                 = "#50ff00"
 theme.menu_height                   = 16
 theme.menu_width                    = 140
+
+-- titlebar_[bg|fg]_[normal|focus]
+-- theme.titlebar_fg_normal = "#3c3c3c"
+theme.titlebar_bg_normal = "#303030"
+theme.titlebar_fg_focus  = "#000000"
+theme.titlebar_bg_focus  = "#0099cc"
 
 theme.wibox_border_width            = 2
 theme.wibox_border                  = "#000000"

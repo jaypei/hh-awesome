@@ -99,8 +99,16 @@ end
 --------------------------------------------------
 -- Layout switch & manipulation
 --------------------------------------------------
+global_keys:def_key({ modkey }, "n", function ()
+    awful.client.focus.byidx( 1)
+    if client.focus then client.focus:raise() end
+end)
 global_keys:def_key({ modkey }, "j", function ()
     awful.client.focus.byidx( 1)
+    if client.focus then client.focus:raise() end
+end)
+global_keys:def_key({ modkey }, "p", function ()
+    awful.client.focus.byidx(-1)
     if client.focus then client.focus:raise() end
 end)
 global_keys:def_key({ modkey }, "k", function ()
@@ -113,14 +121,12 @@ cyclefocus.key({ "Mod1", }, "Tab", 1, {
     keys = {'Tab', 'ISO_Left_Tab'}
 })
 
-global_keys:def_key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end)
 global_keys:def_key({ modkey, "Shift"   }, "n", function () awful.client.swap.byidx(  1)    end)
-global_keys:def_key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end)
 global_keys:def_key({ modkey, "Shift"   }, "p", function () awful.client.swap.byidx( -1)    end)
-global_keys:def_key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end)
 global_keys:def_key({ modkey, "Control" }, "n", function () awful.screen.focus_relative( 1) end)
-global_keys:def_key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end)
+global_keys:def_key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end)
 global_keys:def_key({ modkey, "Control" }, "p", function () awful.screen.focus_relative(-1) end)
+global_keys:def_key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end)
 global_keys:def_key({ modkey,           }, "u", awful.client.urgent.jumpto)
 global_keys:def_key({ modkey,           }, "Tab", function ()
     awful.client.focus.history.previous()
@@ -142,7 +148,6 @@ global_client_keys:def_key({ modkey, "Control" }, "Return",
   function (c) c:swap(awful.client.getmaster()) end)
 global_client_keys:def_key({ modkey }, "o", awful.client.movetoscreen)
 global_client_keys:def_key({ modkey }, "t", function (c) c.ontop = not c.ontop end)
-global_client_keys:def_key({ modkey }, "n", function (c) c.minimized = true end)
 global_client_keys:def_key({ modkey }, "m",
   function (c)
     c.maximized_horizontal = not c.maximized_horizontal
@@ -166,18 +171,17 @@ global_keys:def_key({ modkey }, "e", function () util.clip_translate() end)
 global_keys:def_key({ modkey }, "q", function () util.lock_screen() end)
 global_keys:def_key({ modkey }, "Return", function () exec(config.terminal) end)
 global_keys:def_key({ modkey }, "a", function () exec("shutter -s -e") end)
-global_keys:def_key({ modkey, "Control" }, "n", awful.client.restore)
 global_keys:def_key({ modkey }, "r", function () gexec("rofi -show run") end)
 global_keys:def_key({ modkey }, "w", function () gexec("rofi -show window") end)
-global_keys:def_key({ modkey, "Shift" }, "q", function ()
-    awful.util.spawn("gnome-session-quit")
-end)
 global_keys:def_key({ modkey }, "z", function ()
-    scratch.drop(config.terminal, "bottom", "center", 1, 0.5, true)
+    scratch.drop(config.terminal, "center", "center", 0.8, 0.8, true)
 end)
-global_keys:def_key({ modkey }, "n", function ()
-    scratch.drop(config.file_explorer, "center", "center", 0.75, 0.75, true)
+global_keys:def_key({ modkey }, "s", function ()
+    scratch.drop(config.file_explorer, "center", "center", 0.8, 0.8, true)
 end)
+
+-- Copy to clipboard
+global_keys:def_key({ modkey }, "c", function () gexec("xsel -p -o | xsel -i -b") end)
 
 
 --   awful.key({ modkey }, "x", function ()
@@ -209,9 +213,6 @@ end)
 --       mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
 --   end),
 
---   -- Copy to clipboard
---   awful.key({ modkey }, "c", function () os.execute("xsel -p -o | xsel -i -b") end),
-
 --   -- User programs
 --   awful.key({ modkey }, "q", function () awful.util.spawn(browser) end),
 --   awful.key({ modkey }, "i", function () awful.util.spawn(browser2) end),
@@ -228,5 +229,3 @@ end)
 --         awful.util.getdir("cache") .. "/history_eval")
 --   end),
 -- )
-
-
