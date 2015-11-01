@@ -1,8 +1,29 @@
 local awesome = awesome
 local screen  = screen
 local naughty = require("naughty")
+local beautiful = require("beautiful")
 
 module("hh.notify")
+
+-- naughty config
+-- naughty.config.defaults.screen = config.main_screen
+naughty.config.padding                       = 10
+naughty.config.spacing                       = 0
+naughty.config.defaults.timeout              = 0
+naughty.config.defaults.position             = "top_right"
+
+naughty.config.defaults.font                 = beautiful.naughty_font
+naughty.config.defaults.fg                   = beautiful.naughty_defaults_fg
+naughty.config.defaults.bg                   = beautiful.naughty_defaults_bg
+naughty.config.defaults.border_color         = beautiful.naughty_defaults_border_color
+naughty.config.defaults.border_width         = beautiful.naughty_border_width
+
+naughty.config.presets.critical.font         = beautiful.naughty_font
+naughty.config.presets.critical.fg           = beautiful.naughty_critical_fg
+naughty.config.presets.critical.bg           = beautiful.naughty_critical_bg
+naughty.config.presets.critical.border_color = beautiful.naughty_critical_border_color
+naughty.config.presets.critical.border_width = beautiful.naughty_border_width
+
 
 function info (title, text)
   local scount = screen.count()
@@ -50,5 +71,4 @@ function setup_runtime_errors_handler ()
       end
     )
   end
-  
 end
