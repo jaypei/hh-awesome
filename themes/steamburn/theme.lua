@@ -112,7 +112,7 @@ theme.bat_no                        = themes_dir .. "/icons/bat_no.png"
 -- naughty
 theme.naughty_font                  = "Ubuntu Mono 20px"
 theme.naughty_defaults_fg           = "#ffffff"
-theme.naughty_defaults_bg           = "#006400"
+theme.naughty_defaults_bg           = "#a0522d"
 theme.naughty_defaults_border_color = border_normal_color
 theme.naughty_border_width          = theme.border_width
 

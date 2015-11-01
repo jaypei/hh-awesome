@@ -11,6 +11,7 @@ local gears        = require("gears")
 local beautiful    = require("beautiful")
 local theme        = "steamburn"
 local util         = require("hh.util")
+local naughty      = require("naughty")
 
 module("hh.theme")
 
@@ -40,3 +41,16 @@ client.connect_signal("focus",
         end
     end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+-- naughty
+naughty.config.defaults.font                 = beautiful.naughty_font
+naughty.config.defaults.fg                   = beautiful.naughty_defaults_fg
+naughty.config.defaults.bg                   = beautiful.naughty_defaults_bg
+naughty.config.defaults.border_color         = beautiful.naughty_defaults_border_color
+naughty.config.defaults.border_width         = beautiful.naughty_border_width
+
+naughty.config.presets.critical.font         = beautiful.naughty_font
+naughty.config.presets.critical.fg           = beautiful.naughty_critical_fg
+naughty.config.presets.critical.bg           = beautiful.naughty_critical_bg
+naughty.config.presets.critical.border_color = beautiful.naughty_critical_border_color
+naughty.config.presets.critical.border_width = beautiful.naughty_border_width
