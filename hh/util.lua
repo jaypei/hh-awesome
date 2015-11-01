@@ -5,11 +5,27 @@
 
 local G       = _G
 local class   = require("middleclass/middleclass")
-local awful = require("awful")
-awful.util = require("awful.util")
-local config = require("etc/config")
+local awful   = require("awful")
+awful.util    = require("awful.util")
+local config  = require("etc/config")
+local lain    = require("lain")
+lain.helpers  = require("lain.helpers")
 
 module("hh.util")
+
+--------------------------------------------------
+-- File System
+--------------------------------------------------
+function file_exists(path)
+  return lain.helpers.file_exists(path)
+end
+
+function dir_exists(path)
+    local f = G.io.open(path, "r")
+    local ok, err, code = f:read(1)
+    f:close()
+    return code == 21
+end
 
 --------------------------------------------------
 -- Execute functions
@@ -51,6 +67,15 @@ end
 
 function lock_screen()
   awful.util.spawn(config.dotfile_dir .. "/bin/lock-screen.sh")
+end
+
+function show_rofi(from_binutils)
+  local binutils_dir = config.hh_dotfile_dir .. "/binutils"
+  if from_binutils and dir_exists(binutils_dir) then
+    gexec(config.dotfile_dir .. "/bin/show-rofi.sh '" .. binutils_dir .. "'")
+  else
+    gexec(config.dotfile_dir .. "/bin/show-rofi.sh")
+  end
 end
 
 --------------------------------------------------

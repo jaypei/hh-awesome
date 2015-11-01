@@ -1,14 +1,12 @@
 
 local util    = require("hh.util")
 local config  = require("etc/config")
-local lain     = require("lain")
-lain.helpers   = require("lain.helpers")
 
 module("hh.startups")
 
 local compton_conf_path = config.dotfile_dir .. "/etc/compton.conf"
-local compton_conf_path_hh = config.hh_dotfile_dir .. "/compton.conf"
-if lain.helpers.file_exists(compton_conf_path_hh) then
+local compton_conf_path_hh = config.hh_dotfile_dir .. "/awesome/compton.conf"
+if util.file_exists(compton_conf_path_hh) then
   compton_conf_path = compton_conf_path_hh
 end
 

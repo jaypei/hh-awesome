@@ -3,8 +3,6 @@
 -- github.com/jaypei/hh-awesome
 --
 
-local lain         = require("lain")
-lain.helpers       = require("lain.helpers")
 local config       = require("etc/config")
 local client       = client
 local screen       = screen
@@ -12,16 +10,17 @@ local dotfile_dir  = os.getenv("HOME") .. "/.config/awesome/"
 local gears        = require("gears")
 local beautiful    = require("beautiful")
 local theme        = "steamburn"
+local util         = require("hh.util")
 
 module("hh.theme")
 
-local custom_wallpaper = config.hh_dotfile_dir .. "/wall.png"
+local custom_wallpaper = config.hh_dotfile_dir .. "/awesome/wall.png"
 
 -- beautiful init
 beautiful.init(dotfile_dir .. "themes/" .. theme .. "/theme.lua")
 
 -- wallpaper
-if lain.helpers.file_exists(custom_wallpaper) then
+if util.file_exists(custom_wallpaper) then
   beautiful.wallpaper = custom_wallpaper
 end
 

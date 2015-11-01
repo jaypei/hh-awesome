@@ -15,7 +15,7 @@ lain.layout.termfair.ncol    = 1
 
 -- Window management layouts
 layouts = {
-  awful.layout.suit.floating,         -- 1 
+  awful.layout.suit.floating,         -- 1
   lain.layout.uselessfair.horizontal, -- 2
   lain.layout.uselesstile,            -- 3
   lain.layout.uselessfair             -- 4
