@@ -73,7 +73,7 @@ awful_rules.rules = {
       floating = false,
       border_width = 0
     },
-    callback = make_move_client_tag(5)
+    callback = make_move_client_tag(6)
   },
   {
     rule = { class = "QunarIM", name = "SearchResultDialog" },
@@ -105,7 +105,7 @@ awful_rules.rules = {
     rule = { class = "VirtualBox" },
     callback = make_move_client_tag(7)
   },
-  { 
+  {
     rule = { class = "VirtualBox", name = "Oracle VM VirtualBox Manager" },
     properties = { floating = true }
   },

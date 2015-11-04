@@ -22,9 +22,9 @@ require("hh.signal")
 -- Load hhrc
 package.path =
   config.hh_dotfile_dir ..
-  '/?.lua;' .. ';' ..
+  '/awesome/?.lua;' .. ';' ..
   package.path
-if lain.helpers.file_exists(config.hh_dotfile_dir .. "/hhrc.lua") then
+if lain.helpers.file_exists(config.hh_dotfile_dir .. "/awesome/hhrc.lua") then
   require("hhrc")
 end
 

@@ -9,13 +9,13 @@ return {
   modkey          = "Mod4",
   altkey          = "Mod1",
   terminal        = "urxvt",
-  file_explorer   = "nemo",
+  file_explorer   = "nemo --no-desktop",
   editor          = os.getenv("EDITOR") or "emacs -nw",
   gui_editor      = "emacs",
   browser         = "dwb",
-  browser2        = "firefox",
+  browser1        = "firefox",
   graphics        = "gimp",
   sync_select_ws  = false,
   enable_titlebar = true,
-  screen_padding  = { top=5, right=5, bottom=5, left=5 }
+  screen_padding  = { top=0, right=0, bottom=0, left=0 }
 }

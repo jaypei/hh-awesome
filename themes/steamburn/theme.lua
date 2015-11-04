@@ -4,7 +4,7 @@ border_normal_color                 = "#696969"
 themes_dir                          = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
 theme.wallpaper                     = themes_dir .. "/wall.png"
 
-theme.useless_gap_width             = 25
+theme.useless_gap_width             = 10
 
 theme.font                          = "Source Code Pro 10.5"
 theme.fg_normal                     = "#cdcdcd"

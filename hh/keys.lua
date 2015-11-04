@@ -182,7 +182,7 @@ global_keys:def_key({ modkey }, "s", function ()
 end)
 
 -- Copy to clipboard
-global_keys:def_key({ modkey }, "c", function () gexec("xsel -p -o | xsel -i -b") end)
+-- global_keys:def_key({ modkey }, "c", function () gexec("xsel -p -o | xsel -i -b") end)
 
 
 --   awful.key({ modkey }, "x", function ()
