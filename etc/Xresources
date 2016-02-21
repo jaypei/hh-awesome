@@ -1,0 +1,284 @@
+!******************************************************************************
+! Xft
+!******************************************************************************
+Xft.dpi:               96
+Xft.rgba:              rgb
+Xft.hinting:           true
+! enable BCI no need to use autohint
+Xft.autohint:          false
+!Xft.hintstyle:         hintmedium
+Xft.hintstyle:         hintslight
+Xft.antialias:         true
+Xft.rh_prefer_bitmaps: true
+Xft.lcdfilter:         lcddefault
+
+!******************************************************************************
+! XCursor
+!******************************************************************************
+Xcursor.theme: vanilla-dmz-aa
+Xcursor.size: 32
+
+!******************************************************************************
+! Colors
+!******************************************************************************
+! ------------------------------------------------------------------------------
+! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
+
+! --- special colors ---
+
+*background: #000000
+*foreground: #d9e6f2
+
+! --- standard colors ---
+
+! black
+*color0: #000000
+
+! bright_black
+*color8: #3f3f3f
+
+! red
+*color1: #bb1900
+
+! bright_red
+*color9: #ff705a
+
+! green
+*color2: #00bb19
+
+! bright_green
+*color10: #5aff70
+
+! yellow
+*color3: #a2bb00
+
+! bright_yellow
+*color11: #e9ff5a
+
+! blue
+*color4: #1900bb
+
+! bright_blue
+*color12: #705aff
+
+! magenta
+*color5: #bb00a2
+
+! bright_magenta
+*color13: #ff5ae9
+
+! cyan
+*color6: #00a2bb
+
+! bright_cyan
+*color14: #5ae9ff
+
+! white
+*color7: #c8c8c8
+
+! bright_white
+*color15: #ffffff
+
+! ------------------------------------------------------------------------------
+! --- end of terminal colors section -------------------------------------------
+! ------------------------------------------------------------------------------
+
+!******************************************************************************
+! Emacs
+!******************************************************************************
+!Emacs.backend: xft
+Emacs.geometry: 120x36+48+48
+Emacs.useXIM: true
+!Emacs*font:-gohu-gohufont-medium-r-normal-*-14-100-100-100-c-80-iso8859-1
+!Emacs*boldFont:-gohu-gohufont-medium-r-normal-*-14-100-100-100-c-80-iso8859-1
+
+!******************************************************************************
+! dzen2
+!******************************************************************************
+dzen2.font:       xft:Consolas:size=7
+dzen2.foreground: #f2f2f5
+dzen2.background: #231f20
+
+!******************************************************************************
+! Xterm
+!******************************************************************************
+xterm*title: xterm
+xterm*faceName: hh monofur
+xterm*faceNameDoublesize: Hannotate SC:style=Regular
+xterm*faceSize: 11
+xterm*boldMode: false
+xterm*cutNewline: false
+xterm*on4Clicks: group
+xterm*on5Clicks: page
+xterm*internalBorder: 1
+xterm*customization: color
+xterm*metaSendsEscape: true
+xterm*colorBDMode: false
+xterm*cursorBlink: false
+xterm*dynamiccolors: true
+xterm*utf8: 1
+xterm*loginShell: false
+xterm*jumpScroll: true
+xterm*multiScroll: true
+xterm*saveLines: 4096
+xterm*scrollBar: false
+xterm*xftAntialias: true
+
+xterm*.foreground: #00bb00
+xterm*.background: #001100
+xterm*.cursorColor: #00bb00
+
+xterm*.color0: #001100
+xterm*.color1: #007700
+xterm*.color2: #00bb00
+xterm*.color3: #007700
+xterm*.color4: #009900
+xterm*.color5: #00bb00
+xterm*.color6: #005500
+xterm*.color7: #00bb00
+
+xterm*.color8: #007700
+xterm*.color9: #007700
+xterm*.color10: #00bb00
+xterm*.color11: #007700
+xterm*.color12: #009900
+xterm*.color13: #00bb00
+xterm*.color14: #005500
+xterm*.color15: #00ff00
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+xterm*.color16: #009900
+xterm*.color17: #005500
+xterm*.color18: #003300
+xterm*.color19: #005500
+xterm*.color20: #009900
+xterm*.color21: #00dd00
+
+
+!******************************************************************************
+! urxvt
+!******************************************************************************
+!urxvtbackground: rgba:1500/1500/1500/ffff
+urxvt.cursorBlink: true
+urxvt.selection.pattern-0: \][ ](.+)
+urxvt.selection.pattern-1: >>>[ ]+(.+)
+urxvt.cutchars: "\\ `\"\'()*;<>[]{|}&,=?@^\:"
+! disable Ctrl+Shift
+urxvt.iso14755_52: false
+! chrome
+urxvt.url-launcher: chromium
+urxvt.matcher.button: 1
+! 24 for pesudo transparent, 32 for real transparent
+urxvt.depth:                 32
+urxvt.saveLines:             1536
+urxvt.geometry:              80x24
+urxvt.termName:              xterm-256color
+urxvt.loginShell:            false
+urxvt.urgentOnBell:          true
+! Transparent
+urxvt.transparent: False
+! only for 24bits color pesudo transparent
+!urxvt.inheritPixmap:    True
+!urxvt.shading:          5
+urxvt.tintColor:         #333333
+urxvt.fading:            5
+urxvt.fadeColor:         [0]black
+urxvt.cursorUnderline:   false
+! Scrollbar
+urxvt.scrollBar:          False
+urxvt.scrollBar_right:    yes
+urxvt.scrollBar_floating: False
+urxvt.scrollstyle:        Next
+! http://lifegoo.pluskid.org/wiki/XTerminal.html#urxvt
+! push content in 'screen' / 'tmux' into urxvt scroll buffer
+urxvt.secondaryScroll: true
+! do not scroll to bottom when there is output, but do scroll to bottom on key press
+urxvt.scrollTtyOutput: False
+urxvt.scrollTtyKeypress: True
+urxvt.scrollWithBuffer: True
+! Behaviour urxvt.visualBell:        false
+!---- ctrl+F12 --> clean screen and scroll-bar
+urxvt.keysym.Control-F12: command:\033c
+!---- setting remote-clipboard
+!urxvt.remote-selection.store: rsh ruth ’cat >/tmp/distributed-selection’
+!urxvt.remote-selection.fetch: rsh ruth ’cat /tmp/distributed-selection’
+!de-iconify (map) on receipt of a bell character, may cause damage screen
+urxvt.mapAlert:           true
+urxvt.print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
+! Font
+urxvt.font:xft:hh monofur:size=12:Bold,xft:Heiti SC:size=12:Regular
+urxvt.boldFont:xft:hh monofur:size=12:Bold,xft:Heiti SC:size=12:Bold
+urxvt.letterSpace: -1
+!urxvt.letterSpace: 0
+! IM
+urxvt.preeditType: Root
+urxvt.inputMethod: fcitx
+!urxvt.imFont: -adobe-times-bold-i-normal--12-120-75-75-p-68-iso10646-1
+! UI
+urxvt.internalBorder: 7
+urxvt.externalBorder:0
+! Extensions
+!---- perl extensions: enabled by default has:
+!   selection,option-popup,selection-popup,searchable-scrollback,readline
+! for more: ls /usr/lib/urxvt/perl/
+urxvt.perl-lib:           /usr/lib/urxvt/perl
+urxvt.perl-ext-common:    default,matcher,clipboard,confirm-paste,font-size
+urxvt.matcher.launcher:   x-www-browser
+urxvt.matcher.pattern.1:  \\bwww\\.[\\w-]+\\.[\\w./?&@#-=]*[\\w/-]
+urxvt.iconFile:           /usr/share/icons/gnome/scalable/apps/utilities-terminal-symbolic.svg
+urxvt.clipboard.copycmd:  xclip -i -selection clipboard
+urxvt.clipboard.pastecmd: xclip -o -selection clipboard
+urxvt.keysym.Mod4-c: perl:clipboard:copy
+urxvt.keysym.Mod4-v: perl:clipboard:paste
+urxvt.iso14755: False
+urxvt.keysym.C-Up:     perl:font-size:increase
+urxvt.keysym.C-Down:   perl:font-size:decrease
+urxvt.keysym.C-S-Up:   perl:font-size:incglobal
+urxvt.keysym.C-S-Down: perl:font-size:decglobal
+
+urxvt*foreground: #c0c0c0
+urxvt*background: #000000
+urxvt*color0: #000000
+urxvt*color1: #ad7fa8
+urxvt*color2: #4e9a06
+urxvt*color3: #ffd00a
+urxvt*color4: #004f9e
+urxvt*color5: #ec0048
+urxvt*color6: #2aa7e7
+urxvt*color7: #f2f2f2
+urxvt*color8: #1d202f
+urxvt*color9: #ff361e
+urxvt*color10: #ffc005
+urxvt*color11: #93ff00
+urxvt*color12: #729fcf
+urxvt*color13: #ef0051
+urxvt*color14: #4bb8fd
+urxvt*color15: #a020f0
+
+!******************************************************************************
+! rofi
+!******************************************************************************
+!rofi.font: hh monofur 16
+rofi.font: Ubuntu Mono 16
+rofi.background: #073642
+rofi.foreground: #eee8d5
+rofi.highlightbg: #b58900
+rofi.highlightfg: #ffffff
+rofi.bordercolor: #678698
+rofi.padding: 1
+rofi.lines: 10
+rofi.borderwidth: 1
+rofi.opacity: 100
+rofi.location: 7
+rofi.yoffset: 0
+rofi.xoffset: 1
+rofi.width: 100
+rofi.fixed-num-lines: false
+rofi.hmode: false
+rofi.terminal: urxvt
+rofi.ssh-set-title: false
+rofi.disable-history: true
+
+! vim: ts=4 sw=4 et ai

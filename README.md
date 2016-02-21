@@ -10,6 +10,7 @@ Useful awesome wm config framework.
 * deepin-screenshot
 * slock
 * alsa-utils
+* xclip
 
 
 # Usage
@@ -19,6 +20,11 @@ Useful awesome wm config framework.
 
         cd ~/.config
         git clone --recursive https://github.com/jaypei/hh-awesome.git awesome
+
+1. Setup .Xresources (optional)
+
+        ln -s $(pwd)/etc/Xresources ~/.Xresources
+        xrdb !$
 
 1. Restart your awesome window manager
 
