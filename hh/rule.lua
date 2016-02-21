@@ -57,14 +57,14 @@ awful_rules.rules = {
   {
     rule_any = { class = {
                    "desktop_window", "MPlayer", "pinentry", "rdesktop",
+                   "deepin-music-player", "Deepin-music-player"
                }},
     properties = { floating = true }
   },
   -- emacs
   {
     rule = { class = "Emacs", instance = "_Remember_" },
-    properties = { floating = true },
-    callback = awful.titlebar.add
+    properties = { floating = true }
   },
   -- qtalk
   {
@@ -116,7 +116,7 @@ awful_rules.rules = {
   },
   -- web browser
   {
-    rule_any = { class = { "Firefox", "Chromium-browser", "Google-chrome" } },
+    rule_any = { class = { "Firefox", "Chromium-browser", "Google-chrome", "google-chrome" } },
     callback = make_move_client_tag(9)
   },
   {

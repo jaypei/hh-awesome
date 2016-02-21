@@ -5,9 +5,9 @@ Useful awesome wm config framework.
 
 # Dependency
 
-* compton
+* awesome 3.5+
 * rofi
-* shutter
+* deepin-screenshot
 * slock
 * alsa-utils
 
