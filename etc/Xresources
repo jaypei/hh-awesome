@@ -160,7 +160,27 @@ xterm*.color21: #00dd00
 !******************************************************************************
 ! urxvt
 !******************************************************************************
+!urxvt*foreground: #c0c0c0
+urxvt*foreground: #eeeeee
+urxvt*background: #000000
+urxvt*color0: #000000
+urxvt*color1: #ad7fa8
+urxvt*color2: #4e9a06
+urxvt*color3: #ffd00a
+urxvt*color4: #004f9e
+urxvt*color5: #ec0048
+urxvt*color6: #2aa7e7
+urxvt*color7: #f2f2f2
+urxvt*color8: #1d202f
+urxvt*color9: #ff361e
+urxvt*color10: #ffc005
+urxvt*color11: #93ff00
+urxvt*color12: #729fcf
+urxvt*color13: #ef0051
+urxvt*color14: #4bb8fd
+urxvt*color15: #a020f0
 !urxvtbackground: rgba:1500/1500/1500/ffff
+
 urxvt.cursorBlink: true
 urxvt.selection.pattern-0: \][ ](.+)
 urxvt.selection.pattern-1: >>>[ ]+(.+)
@@ -208,10 +228,10 @@ urxvt.keysym.Control-F12: command:\033c
 urxvt.mapAlert:           true
 urxvt.print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
 ! Font
-urxvt.font:xft:hh monofur:size=12:Bold,xft:Heiti SC:size=12:Regular
-urxvt.boldFont:xft:hh monofur:size=12:Bold,xft:Heiti SC:size=12:Bold
+urxvt.font:xft:hh monofur:pixelsize=17:Regular:antialias=true,xft:Heiti SC:pixelsize=17:Regular
+!urxvt.boldFont:xft:hh monofur:pixelsize=17:Bold:antialias=true,xft:Heiti SC:pixelsize=17:Bold
+urxvt.boldFont:xft:hh monofur:pixelsize=17:Regular:antialias=true,xft:Heiti SC:pixelsize=17:Regular
 urxvt.letterSpace: -1
-!urxvt.letterSpace: 0
 ! IM
 urxvt.preeditType: Root
 urxvt.inputMethod: fcitx
@@ -237,25 +257,6 @@ urxvt.keysym.C-Up:     perl:font-size:increase
 urxvt.keysym.C-Down:   perl:font-size:decrease
 urxvt.keysym.C-S-Up:   perl:font-size:incglobal
 urxvt.keysym.C-S-Down: perl:font-size:decglobal
-
-urxvt*foreground: #c0c0c0
-urxvt*background: #000000
-urxvt*color0: #000000
-urxvt*color1: #ad7fa8
-urxvt*color2: #4e9a06
-urxvt*color3: #ffd00a
-urxvt*color4: #004f9e
-urxvt*color5: #ec0048
-urxvt*color6: #2aa7e7
-urxvt*color7: #f2f2f2
-urxvt*color8: #1d202f
-urxvt*color9: #ff361e
-urxvt*color10: #ffc005
-urxvt*color11: #93ff00
-urxvt*color12: #729fcf
-urxvt*color13: #ef0051
-urxvt*color14: #4bb8fd
-urxvt*color15: #a020f0
 
 !******************************************************************************
 ! rofi

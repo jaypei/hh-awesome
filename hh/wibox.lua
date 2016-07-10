@@ -84,3 +84,7 @@ for s = 1, screen.count() do
     right_layout:add(hh_layoutbox[s].widget)
 end
 
+return {
+  my_top_wibox = my_top_wibox,
+  my_bot_wibox = my_bot_wibox
+}

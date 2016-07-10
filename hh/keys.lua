@@ -1,4 +1,3 @@
-
 require("awful.layout")
 require("awful.tag")
 
@@ -147,7 +146,6 @@ global_client_keys:def_key({ modkey, "Control" }, "space", awful.client.floating
 global_client_keys:def_key({ modkey, "Control" }, "Return",
   function (c) c:swap(awful.client.getmaster()) end)
 global_client_keys:def_key({ modkey }, "o", awful.client.movetoscreen)
-global_client_keys:def_key({ modkey }, "t", function (c) c.ontop = not c.ontop end)
 global_client_keys:def_key({ modkey }, "m",
   function (c)
     c.maximized_horizontal = not c.maximized_horizontal
@@ -167,13 +165,24 @@ global_client_keys:def_key({ modkey }, "Up",    function () awful.client.incwfac
 -- helpers
 --------------------------------------------------
 global_keys:def_key({ modkey, "Control" }, "r", awesome.restart)
-global_keys:def_key({ modkey }, "e", function () util.clip_translate() end)
+global_keys:def_key({ modkey }, "w", function ()
+    gexec("rofi -show window")
+end)
+global_keys:def_key({ modkey }, "e", function (c)
+    gexec(config.gui_editor)
+end)
+global_client_keys:def_key({ modkey }, "t", function (c)
+    util.clip_translate()
+end)
 global_keys:def_key({ modkey }, "q", function () util.lock_screen() end)
-global_keys:def_key({ modkey }, "Return", function () exec(config.terminal) end)
-global_keys:def_key({ modkey }, "a", function () exec("deepin-screenshot") end)
+global_keys:def_key({ modkey }, "Return", function ()
+    gexec(config.terminal)
+end)
+global_keys:def_key({ modkey }, "a", function ()
+    gexec("deepin-screenshot")
+end)
 global_keys:def_key({ modkey          }, "r", function () util.show_rofi(true) end)
 global_keys:def_key({ modkey, "Shift" }, "r", function () util.show_rofi(false) end)
-global_keys:def_key({ modkey }, "w", function () gexec("rofi -show window") end)
 global_keys:def_key({ modkey }, "z", function ()
     scratch.drop(config.terminal, "center", "center", 0.8, 0.8, true)
 end)
@@ -181,52 +190,10 @@ global_keys:def_key({ modkey }, "s", function ()
     scratch.drop(config.file_explorer, "center", "center", 0.8, 0.8, true)
 end)
 
--- Copy to clipboard
--- global_keys:def_key({ modkey }, "c", function () gexec("xsel -p -o | xsel -i -b") end)
-
-
---   awful.key({ modkey }, "x", function ()
---       awful.prompt.run({ prompt = "Run Lua code: " },
---         hh_wibox.mypromptbox[mouse.screen].widget,
---         awful.util.eval, nil,
---         awful.util.getdir("cache") .. "/history_eval")
---   end),
-
-
--- clientkeys = awful.util.table.join(
---   awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
---   awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
---   awful.key({ modkey            }, "Next",   function () awful.client.moveresize( 20,  20, -40, -40) end),
---   awful.key({ modkey            }, "Prior",  function () awful.client.moveresize(-20, -20,  40,  40) end),
---   awful.key({ modkey            }, "Down",   function () awful.client.moveresize(  0,  20,   0,   0) end),
---   awful.key({ modkey            }, "Up",     function () awful.client.moveresize(  0, -20,   0,   0) end),
---   awful.key({ modkey            }, "Left",   function () awful.client.moveresize(-20,   0,   0,   0) end),
---   awful.key({ modkey            }, "Right",  function () awful.client.moveresize( 20,   0,   0,   0) end),
---   awful.key({ modkey,           }, "m",
---     function (c)
---       c.maximized_horizontal = not c.maximized_horizontal
---       c.maximized_vertical   = not c.maximized_vertical
---   end)
--- )
-
---   -- Show/Hide Wibox
---   awful.key({ modkey }, "b", function ()
---       mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
---   end),
-
---   -- User programs
---   awful.key({ modkey }, "q", function () awful.util.spawn(browser) end),
---   awful.key({ modkey }, "i", function () awful.util.spawn(browser2) end),
---   awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
---   awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
-
---   -- Prompt
---   awful.key({ modkey }, "r", function () mypromptbox[mouse.screen]:run() end),
---   awful.key({ modkey }, "x",
---     function ()
---       awful.prompt.run({ prompt = "Run Lua code: " },
---         mypromptbox[mouse.screen].widget,
---         awful.util.eval, nil,
---         awful.util.getdir("cache") .. "/history_eval")
---   end),
--- )
+-- Show/Hide Wibox
+global_keys:def_key({ modkey }, "b", function ()
+    hh_wibox.my_top_wibox[mouse.screen].visible =
+      not hh_wibox.my_top_wibox[mouse.screen].visible
+    hh_wibox.my_bot_wibox[mouse.screen].visible =
+      not hh_wibox.my_bot_wibox[mouse.screen].visible
+end)

@@ -20,7 +20,7 @@ fi
      
 text="$1"
  
-$CURRPATH/ydcv $text > $TRANS_FILE
+$CURRPATH/ydcv "$text" > $TRANS_FILE
 
 result="
 naughty = require('naughty')
