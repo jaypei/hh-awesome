@@ -56,12 +56,15 @@ function gexec(cmd)
   exec(exec_cmd)
 end
 
-function clip_translate()
+function clip_translate(tool)
     local clip = nil
     clip = awful.util.pread("xclip -o")
     if clip then
       awful.util.spawn(
-        config.dotfile_dir .. "/bin/trans.sh \"" .. clip .. "\"", false)
+        config.dotfile_dir .. "/bin/trans.sh " ..
+          "\"" .. tool .. "\" " ..
+          "\"" .. clip .. "\"",
+        false)
     end
 end
 

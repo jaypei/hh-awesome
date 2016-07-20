@@ -1,5 +1,6 @@
 theme                               = {}
 border_normal_color                 = "#696969"
+border_focus_color                  = "#4682b4"
 
 themes_dir                          = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
 theme.wallpaper                     = themes_dir .. "/wall.png"
@@ -112,12 +113,12 @@ theme.bat_no                        = themes_dir .. "/icons/bat_no.png"
 -- naughty
 theme.naughty_font                  = "Ubuntu Mono 20px"
 theme.naughty_defaults_fg           = "#ffffff"
-theme.naughty_defaults_bg           = "#a0522d"
-theme.naughty_defaults_border_color = border_normal_color
+theme.naughty_defaults_bg           = "#000033"
+theme.naughty_defaults_border_color = border_focus_color
 theme.naughty_border_width          = theme.border_width
 
 theme.naughty_critical_fg           = "#cfffff"
-theme.naughty_critical_bg           = "#cacaca"
-theme.naughty_critical_border_color = border_normal_color
+theme.naughty_critical_bg           = "#770000"
+theme.naughty_critical_border_color = border_focus_color
 
 return theme

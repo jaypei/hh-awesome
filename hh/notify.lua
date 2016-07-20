@@ -6,10 +6,10 @@ module("hh.notify")
 
 -- naughty config
 -- naughty.config.defaults.screen = config.main_screen
-naughty.config.padding                       = 20
+naughty.config.padding                       = 10
 naughty.config.spacing                       = 1
-naughty.config.defaults.margin               = 20
-naughty.config.defaults.timeout              = 0
+naughty.config.defaults.margin               = 10
+naughty.config.defaults.timeout              = 5
 naughty.config.defaults.position             = "top_right"
 
 function info (title, text)

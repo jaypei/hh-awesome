@@ -13,14 +13,14 @@ TRANS_FILE="/tmp/trans.out"
 # 0 as infinity
 TIMEOUT_SECS=0
 
-if [ -z "$1" ]
-  then
+if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Exiting"
 fi
-     
-text="$1"
- 
-$CURRPATH/ydcv "$text" > $TRANS_FILE
+
+transtool="$1"
+text="$2"
+
+$CURRPATH/$transtool "$text" > $TRANS_FILE
 
 result="
 naughty = require('naughty')
@@ -30,11 +30,11 @@ local t = f:read(\"*all\")
 f:close()
 
 naughty.notify({
-  title=\"Trans Result \",
-  text=\"\\n\" .. t:gsub(\"^(.-)%s*$\", \"%1\"),
+  title=nil,
+  text=\"\" .. t:gsub(\"^(.-)%s*$\", \"%1\"),
   timeout=$TIMEOUT_SECS
 })
 "
 echo $result | awesome-client -
-     
+
 exit
