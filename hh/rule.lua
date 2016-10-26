@@ -73,7 +73,7 @@ awful_rules.rules = {
   },
   -- qtalk
   {
-    rule = { class = "QunarIM" },
+    rule_any = { class = { "QunarIM", "electronic-wechat" } },
     properties = {
       floating = false,
       border_width = 0

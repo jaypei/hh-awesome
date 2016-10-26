@@ -25,8 +25,8 @@ layouts = {
 tags = {
   names  = { "1:WS", "2:WS", "3:WS", "4:WS",
              "5:DOC", "6:IM", "7:SCHED", "8:MAIL", "9:WEB"},
-  layout = { layouts[2], layouts[2], layouts[3], layouts[2],
-             layouts[2], layouts[1], layouts[3], layouts[3], layouts[2] }
+  layout = { layouts[2], layouts[2], layouts[2], layouts[2],
+             layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
 }
 
 for s = 1, screen.count() do
