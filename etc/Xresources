@@ -203,10 +203,10 @@ urxvt.transparent: False
 ! only for 24bits color pesudo transparent
 !urxvt.inheritPixmap:    True
 !urxvt.shading:          5
-urxvt.tintColor:         #333333
-urxvt.fading:            5
-urxvt.fadeColor:         [0]black
-urxvt.cursorUnderline:   false
+!! urxvt.tintColor:         #333333
+!! urxvt.fading:            5
+!! urxvt.fadeColor:         [0]black
+!! urxvt.cursorUnderline:   false
 ! Scrollbar
 urxvt.scrollBar:          False
 urxvt.scrollBar_right:    yes

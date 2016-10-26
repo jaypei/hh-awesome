@@ -68,7 +68,7 @@ client.connect_signal(
     if not startup then
       on_startup(c)
     end
-    setup_titlebar(c)
+    --setup_titlebar(c)
 end)
 
 client.connect_signal(

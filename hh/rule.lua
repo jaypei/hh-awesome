@@ -1,3 +1,9 @@
+--
+-- Use xprop to view the window properties
+--
+-- If you found there are strings in CLASS field,
+-- means the first one is INSTANCE, and the last one is CLASS.
+--
 
 local screen = screen
 local mouse = mouse
@@ -26,7 +32,6 @@ function make_move_client_tag(tagidx)
   return fn
 end
 
--- Use xprop to view class and instance
 
 awful_rules.rules = {
   -- All clients will match this rule.
@@ -125,6 +130,10 @@ awful_rules.rules = {
   },
   { rule = { class = "Dwb" },
     callback = make_move_client_tag(9)
+  },
+  {
+    rule = { instance = "crx_diankknpkndanachmlckaikddgcehkod" },
+    callback = make_move_client_tag(7)
   },
   -- Gimp
   {
