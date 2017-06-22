@@ -230,9 +230,8 @@ urxvt.mapAlert:           true
 urxvt.print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
 ! Font
 urxvt.font:xft:hh monofur:pixelsize=17:Regular:antialias=true,xft:Heiti SC:pixelsize=17:Regular
-!urxvt.boldFont:xft:hh monofur:pixelsize=17:Bold:antialias=true,xft:Heiti SC:pixelsize=17:Bold
 urxvt.boldFont:xft:hh monofur:pixelsize=17:Regular:antialias=true,xft:Heiti SC:pixelsize=17:Regular
-urxvt.letterSpace: -1
+urxvt.letterSpace: -0.5
 ! IM
 urxvt.preeditType: Root
 urxvt.inputMethod: fcitx

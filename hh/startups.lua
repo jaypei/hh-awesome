@@ -14,4 +14,4 @@ end
 util.sexec("wmname LG3D")
 -- Set keyboard interval
 util.sexec("xset r rate 300")
-util.run_once("compton --config " .. compton_conf_path)
+-- util.run_once("compton --config " .. compton_conf_path)

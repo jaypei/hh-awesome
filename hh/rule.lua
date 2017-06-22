@@ -100,6 +100,13 @@ awful_rules.rules = {
     },
     callback = awful_placement.centered
   },
+  {
+    rule = { class = "QunarIM", name = "图片查看器" },
+    properties = {
+      floating = true
+    },
+    callback = awful_placement.centered
+  },
   -- aliwangwang
   {
     rule = { class = "AliWangWang" },
@@ -121,7 +128,7 @@ awful_rules.rules = {
   },
   -- web browser
   {
-    rule_any = { class = { "Firefox", "Chromium-browser", "Google-chrome", "google-chrome" } },
+    rule_any = { class = { "Firefox", "Chromium", "Chromium-browser", "Google-chrome", "google-chrome" } },
     callback = make_move_client_tag(9)
   },
   {
