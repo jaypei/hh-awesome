@@ -5,9 +5,9 @@ local hh_dotfile_dir = home_dir .. "/.hh"
 return {
   hh_dotfile_dir  = hh_dotfile_dir,
   dotfile_dir     = dotfile_dir,
-  exec_term       = "/usr/bin/zsh -c",
   modkey          = "Mod4",
   altkey          = "Mod1",
+  exec_term       = "/bin/bash -c",
   terminal        = "urxvt",
   file_explorer   = "nemo --no-desktop",
   editor          = os.getenv("EDITOR") or "emacs -nw",

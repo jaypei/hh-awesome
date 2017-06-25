@@ -222,7 +222,7 @@ local raise_client = function(c)
     -- Try to make client visible, this also covers e.g. sticky
     local t = c:tags()[1]
     if t and not c:isvisible() then
-        awful.tag.viewonly(t)
+      t:view_only()
     end
     c:raise()
 end

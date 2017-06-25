@@ -11,19 +11,21 @@ local gray   = "#94928F"
 
 local hh_layoutbox    = require("hh.widget.layoutbox")
 local hh_tasklist     = require("hh.widget.tasklist")
-local hh_textclock    = require("hh.widget.clock")
+-- local hh_textclock    = require("hh.widget.clock")
 local hh_battery      = require("hh.widget.battery")
 local hh_volume       = require("hh.widget.volume")
 local hh_screen_num   = require("hh.widget.screen_num")
 
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
-                    awful.button({ }, 1, awful.tag.viewonly),
-                    awful.button({ modkey }, 1, awful.client.movetotag),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end))
+  awful.button({ }, 1, function (t)
+      t:view_only()
+  end),
+  awful.button({ modkey }, 1, awful.client.movetotag),
+  awful.button({ }, 3, awful.tag.viewtoggle),
+  awful.button({ modkey }, 3, awful.client.toggletag),
+  awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
+  awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end))
 
 
 my_top_wibox = {}
@@ -32,7 +34,7 @@ my_bot_wibox = {}
 for s = 1, screen.count() do
 
     -- TOP
-    my_top_wibox[s] = awful.wibox({
+    my_top_wibox[s] = awful.wibar({
         position = "top", screen = s, height = 18,
         border_width = beautiful.wibox_border_width,
         border_color = beautiful.wibox_border
@@ -56,11 +58,11 @@ for s = 1, screen.count() do
     right_layout:add(hh_volume.widget)
     right_layout:add(hh_battery.icon)
     right_layout:add(hh_battery.widget)
-    right_layout:add(hh_textclock.icon)
-    right_layout:add(hh_textclock.widget)
+    -- right_layout:add(hh_textclock.icon)
+    -- right_layout:add(hh_textclock.widget)
 
     -- BOTTOM
-    my_bot_wibox[s] = awful.wibox({
+    my_bot_wibox[s] = awful.wibar({
         position = "bottom", screen = s, height = 18,
         border_width = beautiful.wibox_border_width,
         border_color = beautiful.wibox_border

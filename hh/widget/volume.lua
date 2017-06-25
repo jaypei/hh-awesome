@@ -12,7 +12,7 @@ green  = "#8FEB8F"
 terminal = config.terminal
 
 volicon = wibox.widget.imagebox(beautiful.vol)
-volume = lain.widgets.alsabar({width = 55, ticks = true, ticks_size = 6, step = "2%",
+volume = lain.widget.alsabar({width = 55, ticks = true, ticks_size = 6, step = "2%",
 settings = function()
     if volume_now.status == "off" then
         volicon:set_image(beautiful.vol_mute)
@@ -30,10 +30,10 @@ colors =
     mute = red,
     unmute = beautiful.fg_normal
 }})
-volmargin = wibox.layout.margin(volume.bar, 2, 7)
+volmargin = wibox.container.margin(volume.bar, 2, 7)
 volmargin:set_top(6)
 volmargin:set_bottom(6)
-volumewidget = wibox.widget.background(volmargin)
+volumewidget = wibox.container.background(volmargin)
 volumewidget:set_bgimage(beautiful.widget_bg)
 
 return {

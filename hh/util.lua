@@ -22,6 +22,9 @@ end
 
 function dir_exists(path)
     local f = G.io.open(path, "r")
+    if f == nil then
+	    return false
+    end
     local ok, err, code = f:read(1)
     f:close()
     return code == 21
@@ -31,13 +34,13 @@ end
 -- Execute functions
 --------------------------------------------------
 
-local oldspawn = awful.util.spawn
+local oldspawn = awful.spawn
 awful.util.spawn = function (s)
   oldspawn(s, false)
 end
 
 exec  = function (s) oldspawn(s, false) end
-sexec = awful.util.spawn_with_shell
+sexec = awful.spawn.with_shell
 
 function run_once(cmd)
   local findme = cmd
@@ -45,8 +48,8 @@ function run_once(cmd)
   if firstspace then
     findme = cmd:sub(0, firstspace-1)
   end
-  awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme ..
-                                " > /dev/null || (" .. cmd .. ")")
+  awful.spawn.with_shell("pgrep -u $USER -x " .. findme ..
+                         " > /dev/null || (" .. cmd .. ")")
 end
 
 function gexec(cmd)

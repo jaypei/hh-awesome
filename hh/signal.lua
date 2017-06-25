@@ -73,10 +73,10 @@ end)
 
 client.connect_signal(
   "focus", function (c)
-    lain_util.niceborder_focus(c)
+    --lain_util.niceborder_focus(c)
 end)
 
 client.connect_signal(
   "unfocus", function (c)
-    lain_util.niceborder_unfocus(c)
+    --lain_util.niceborder_unfocus(c)
 end)

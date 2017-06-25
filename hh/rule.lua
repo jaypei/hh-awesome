@@ -7,6 +7,7 @@
 
 local screen = screen
 local mouse = mouse
+local print = print
 local config = require("etc/config")
 local awful = require("awful")
 local beautiful = require("beautiful")
@@ -20,8 +21,7 @@ local rules = {}
 local scount = screen.count()
 
 function move_client_tag(c, tagidx)
-  awful.client.movetotag(
-    hh_tag.tags[mouse.screen][tagidx], c)
+  c:move_to_tag(hh_tag.tags[mouse.screen.index][tagidx])
 end
 
 function make_move_client_tag(tagidx)

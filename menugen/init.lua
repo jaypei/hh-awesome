@@ -5,6 +5,7 @@
 -- @release v3.5.5
 ---------------------------------------------------------------------------
 
+local print      = print
 local menu_gen   = require("menubar.menu_gen")
 local menu_utils = require("menubar.utils")
 local pairs      = pairs
@@ -16,7 +17,8 @@ local next       = next
 module("menugen")
 
 -- Built in menubar should be checking local applications directory
-menu_gen.all_menu_dirs = { '/usr/share/applications/', '/usr/local/share/applications/', '~/.local/share/applications' }
+-- menu_gen.all_menu_dirs = { '/usr/share/applications/', '/usr/local/share/applications/', '~/.local/share/applications' }
+menu_gen.all_menu_dirs = { '/usr/share/applications/' }
 
 -- Expecting an wm_name of awesome omits too many applications and tools
 menu_utils.wm_name = ""
@@ -25,17 +27,20 @@ menu_utils.wm_name = ""
 -- @return awful.menu compliant menu items tree
 function build_menu()
 	local result = {}
-	local menulist = menu_gen.generate()
+	local menulist = menu_gen.generate(function()
+	end)
 
 	for k,v in pairs(menu_gen.all_categories) do
 		table.insert(result, {k, {}, v["icon"] } )
 	end
 
-	for k, v in ipairs(menulist) do
-		for _, cat in ipairs(result) do
-			if cat[1] == v["category"] then
-				table.insert( cat[2] , { v["name"], v["cmdline"], v["icon"] } )
-				break
+	if menulist ~= nil then
+		for k, v in ipairs(menulist) do
+			for _, cat in ipairs(result) do
+				if cat[1] == v["category"] then
+					table.insert( cat[2] , { v["name"], v["cmdline"], v["icon"] } )
+					break
+				end
 			end
 		end
 	end

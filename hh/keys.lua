@@ -38,37 +38,38 @@ global_keys:def_btn({}, 3, function () menu.main:toggle() end)
 -- key-bindings about tag
 --------------------------------------------------
 global_keys:def_key({ modkey }, "Escape", awful.tag.history.restore)
+global_keys:def_key({ modkey }, "`", awful.tag.history.restore)
 
 for i = 1, 9 do
   -- switch tag
   global_keys:def_key({ modkey }, "#" .. i+9, function ()
       if config.sync_select_ws then
-        for s = 1, screen.count() do
-          local tag = awful.tag.gettags(s)[i]
+        for s in screen do
+          local tag = s.tags[i]
           if tag then
-            awful.tag.viewonly(tag)
+            tag:view_only()
           end
         end
       else
         local lscreen = mouse.screen
-        local tag = awful.tag.gettags(lscreen)[i]
+        local tag = lscreen.tags[i]
         if tag then
-          awful.tag.viewonly(tag)
+          tag:view_only()
         end
       end
   end)
   -- Toggle tag
   global_keys:def_key({ modkey, "Control" }, "#" .. i+9, function ()
       if config.sync_select_ws then
-        for s = 1, screen.count() do
-          local tag = awful.tag.gettags(s)[i]
+        for s in screen do
+          local tag = s.tags[i]
           if tag then
             awful.tag.viewtoggle(tag)
           end
         end
       else
         local lscreen = mouse.screen
-        local tag = awful.tag.gettags(lscreen)[i]
+        local tag = lscreen.tags[i]
         if tag then
           awful.tag.viewtoggle(tag)
         end
@@ -77,7 +78,7 @@ for i = 1, 9 do
   -- Move client to tag
   global_keys:def_key({ modkey, "Shift" }, "#" .. i+9, function ()
       if client.focus then
-        local tag = awful.tag.gettags(client.focus.screen)[i]
+        local tag = client.focus.screen.tags[i]
         if tag then
           awful.client.movetotag(tag)
         end
@@ -87,7 +88,7 @@ for i = 1, 9 do
   global_keys:def_key({ modkey, "Control", "Shift" }, "#" .. i+9,
     function ()
       if client.focus then
-        local tag = awful.tag.gettags(client.focus.screen)[i]
+        local tag = client.focus.screen.tags[i]
         if tag then
           awful.client.toggletag(tag)
         end
@@ -98,34 +99,48 @@ end
 --------------------------------------------------
 -- Layout switch & manipulation
 --------------------------------------------------
-global_keys:def_key({ modkey }, "n", function ()
-    awful.client.focus.byidx( 1)
-    if client.focus then client.focus:raise() end
-end)
-global_keys:def_key({ modkey }, "j", function ()
-    awful.client.focus.byidx( 1)
-    if client.focus then client.focus:raise() end
-end)
-global_keys:def_key({ modkey }, "p", function ()
-    awful.client.focus.byidx(-1)
-    if client.focus then client.focus:raise() end
-end)
-global_keys:def_key({ modkey }, "k", function ()
-    awful.client.focus.byidx(-1)
-    if client.focus then client.focus:raise() end
-end)
 cyclefocus.key({ "Mod1", }, "Tab", 1, {
     cycle_filters = { cyclefocus.filters.same_screen,
                       cyclefocus.filters.common_tag },
     keys = {'Tab', 'ISO_Left_Tab'}
 })
 
-global_keys:def_key({ modkey, "Shift"   }, "n", function () awful.client.swap.byidx(  1)    end)
-global_keys:def_key({ modkey, "Shift"   }, "p", function () awful.client.swap.byidx( -1)    end)
-global_keys:def_key({ modkey, "Control" }, "n", function () awful.screen.focus_relative( 1) end)
-global_keys:def_key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end)
-global_keys:def_key({ modkey, "Control" }, "p", function () awful.screen.focus_relative(-1) end)
-global_keys:def_key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end)
+global_keys:def_key({ modkey,           }, "n", function ()
+    awful.client.focus.byidx( 1) if client.focus then client.focus:raise() end
+end)
+global_keys:def_key({ modkey,           }, "p", function ()
+    awful.client.focus.byidx(-1) if client.focus then client.focus:raise() end
+end)
+global_keys:def_key({ modkey,           }, "h", function ()
+    awful.client.focus.bydirection("left") if client.focus then client.focus:raise() end
+end)
+global_keys:def_key({ modkey,           }, "l", function ()
+    awful.client.focus.bydirection("right") if client.focus then client.focus:raise() end
+end)
+global_keys:def_key({ modkey,           }, "j", function ()
+    awful.client.focus.bydirection("down") if client.focus then client.focus:raise() end
+end)
+global_keys:def_key({ modkey,           }, "k", function ()
+    awful.client.focus.bydirection("up") if client.focus then client.focus:raise() end
+end)
+global_keys:def_key({ modkey, "Shift"   }, "n", function ()
+    awful.client.swap.byidx(  1)
+end)
+global_keys:def_key({ modkey, "Shift"   }, "p", function ()
+    awful.client.swap.byidx( -1)
+end)
+global_keys:def_key({ modkey, "Control" }, "n", function ()
+    awful.screen.focus_relative( 1)
+end)
+global_keys:def_key({ modkey, "Control" }, "j", function ()
+    awful.screen.focus_relative( 1)
+end)
+global_keys:def_key({ modkey, "Control" }, "p", function ()
+    awful.screen.focus_relative(-1)
+end)
+global_keys:def_key({ modkey, "Control" }, "k", function ()
+    awful.screen.focus_relative(-1)
+end)
 global_keys:def_key({ modkey,           }, "u", awful.client.urgent.jumpto)
 global_keys:def_key({ modkey,           }, "Tab", function ()
     awful.client.focus.history.previous()
@@ -145,7 +160,9 @@ global_client_keys:def_key({ modkey, "Shift"   }, "c", function (c) c:kill() end
 global_client_keys:def_key({ modkey, "Control" }, "space", awful.client.floating.toggle)
 global_client_keys:def_key({ modkey, "Control" }, "Return",
   function (c) c:swap(awful.client.getmaster()) end)
-global_client_keys:def_key({ modkey }, "o", awful.client.movetoscreen)
+global_client_keys:def_key({ modkey }, "o", function (c)
+    c:move_to_screen()
+end)
 global_client_keys:def_key({ modkey }, "m",
   function (c)
     c.maximized_horizontal = not c.maximized_horizontal
