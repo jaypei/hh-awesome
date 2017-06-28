@@ -20,6 +20,7 @@ local modkey  = config.modkey
 local altkey  = config.altkey
 local exec    = util.exec
 local gexec   = util.gexec
+local sexec   = util.sexec
 
 module("hh.keys")
 
@@ -132,13 +133,13 @@ end)
 global_keys:def_key({ modkey, "Control" }, "n", function ()
     awful.screen.focus_relative( 1)
 end)
-global_keys:def_key({ modkey, "Control" }, "j", function ()
+global_keys:def_key({ modkey, "Control" }, "h", function ()
     awful.screen.focus_relative( 1)
 end)
 global_keys:def_key({ modkey, "Control" }, "p", function ()
     awful.screen.focus_relative(-1)
 end)
-global_keys:def_key({ modkey, "Control" }, "k", function ()
+global_keys:def_key({ modkey, "Control" }, "l", function ()
     awful.screen.focus_relative(-1)
 end)
 global_keys:def_key({ modkey,           }, "u", awful.client.urgent.jumpto)
@@ -200,7 +201,8 @@ global_keys:def_key({ modkey }, "Return", function ()
 end)
 global_keys:def_key({ modkey }, "a", function ()
     --gexec("deepin-screenshot")
-    gexec("gscreenshot")
+    --gexec("gscreenshot")
+    sexec("gnome-screenshot -c -a")
 end)
 global_keys:def_key({ modkey          }, "r", function () util.show_rofi(true) end)
 global_keys:def_key({ modkey, "Shift" }, "r", function () util.show_rofi(false) end)

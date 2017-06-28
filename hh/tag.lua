@@ -19,10 +19,10 @@ layouts = {
 }
 
 l_tags = {
-  names  = { "1:WS", "2:WS", "3:WS", "4:WS",
-             "5:DOC", "6:IM", "7:SCHED", "8:MAIL", "9:WEB"},
-  layout = { layouts[2], layouts[2], layouts[2], layouts[2],
-             layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
+  names  = { "1:C", "2:C", "3:C", "4:W",
+             "5:P", "6", "7:VM", "8:MAIL", "9:WWW"},
+  layout = { layouts[2], layouts[2], layouts[2], layouts[1],
+             layouts[1], layouts[1], layouts[2], layouts[2], layouts[2] }
 }
 
 tags = {}

@@ -47,10 +47,10 @@ awful_rules.rules = {
     }
   },
   -- urxvt
-  {
-    rule = { class = "URxvt" },
-    properties = { opacity = 0.95 }
-  },
+  -- {
+  --   rule = { class = "URxvt" },
+  --   properties = { opacity = 0.95 }
+  -- },
   -- nemo
   {
     rule = { class = "Nemo", instance = "desktop_window" },
@@ -73,12 +73,12 @@ awful_rules.rules = {
   },
   -- qtalk
   {
-    rule_any = { class = { "QunarIM", "electronic-wechat" } },
+    rule_any = { class = { "QunarIM" } },
     properties = {
       floating = false,
       border_width = 0
     },
-    callback = make_move_client_tag(6)
+    callback = make_move_client_tag(4)
   },
   {
     rule = { class = "QunarIM", name = "SearchResultDialog" },
@@ -100,14 +100,23 @@ awful_rules.rules = {
     },
     callback = awful_placement.centered
   },
+  -- wechat
+  {
+    rule_any = { class = { "electronic-wechat" } },
+    properties = {
+      floating = false,
+      border_width = 0
+    },
+    callback = make_move_client_tag(5)
+  },
   -- aliwangwang
   {
     rule = { class = "AliWangWang" },
-    callback = make_move_client_tag(6)
+    callback = make_move_client_tag(5)
   },
   -- virtualbox
   {
-    rule = { class = "VirtualBox" },
+    rule_any = { class = { "VirtualBox", "virt-manager", "Virt-manager", "Spicy" } },
     callback = make_move_client_tag(7)
   },
   {
@@ -122,6 +131,8 @@ awful_rules.rules = {
   -- web browser
   {
     rule_any = { class = { "Firefox", "Chromium-browser", "Google-chrome", "google-chrome" } },
+    properties = { maximized_horizontal  = false,
+                   maximized_vertical    = false },
     callback = make_move_client_tag(9)
   },
   {
@@ -131,9 +142,10 @@ awful_rules.rules = {
   { rule = { class = "Dwb" },
     callback = make_move_client_tag(9)
   },
+  -- dida360
   {
     rule = { instance = "crx_diankknpkndanachmlckaikddgcehkod" },
-    callback = make_move_client_tag(7)
+    callback = make_move_client_tag(5)
   },
   -- Gimp
   {
