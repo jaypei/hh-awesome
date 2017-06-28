@@ -20,7 +20,7 @@ mytextclock = awful.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#
 --})
 
 -- Calendar
-lain.widget.calendar:attach(mytextclock, { font_size = 10 })
+lain.widget.calendar.attach(mytextclock, { font_size = 10 })
 
 return {
   icon = clockicon,

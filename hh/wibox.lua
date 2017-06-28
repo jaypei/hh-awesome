@@ -11,7 +11,7 @@ local gray   = "#94928F"
 
 local hh_layoutbox    = require("hh.widget.layoutbox")
 local hh_tasklist     = require("hh.widget.tasklist")
--- local hh_textclock    = require("hh.widget.clock")
+local hh_textclock    = require("hh.widget.clock")
 local hh_battery      = require("hh.widget.battery")
 local hh_volume       = require("hh.widget.volume")
 local hh_screen_num   = require("hh.widget.screen_num")
@@ -58,8 +58,8 @@ for s = 1, screen.count() do
     right_layout:add(hh_volume.widget)
     right_layout:add(hh_battery.icon)
     right_layout:add(hh_battery.widget)
-    -- right_layout:add(hh_textclock.icon)
-    -- right_layout:add(hh_textclock.widget)
+    right_layout:add(hh_textclock.icon)
+    right_layout:add(hh_textclock.widget)
 
     -- BOTTOM
     my_bot_wibox[s] = awful.wibar({
