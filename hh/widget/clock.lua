@@ -3,9 +3,18 @@ local lain      = require("lain")
 local markup    = require("hh.widget.markup").markup
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
+local naughty = require("naughty")
 
-clockicon = wibox.widget.imagebox(beautiful.widget_clock)
-mytextclock = awful.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#343639", ">") .. markup("#de5e1e", " %H:%M "))
+local clockicon = wibox.widget.imagebox(beautiful.widget_clock)
+local mytextclock = awful.widget.watch(
+    "date +'%Y-%m-%d %R %A'",
+    60,
+    function(widget, stdout)
+        widget:set_markup(markup.font(theme.font, stdout))
+    end
+)
+
+-- mytextclock = awful.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#343639", ">") .. markup("#de5e1e", " %H:%M "))
 --mytextclock = awful.widget.watch({
 --    timeout  = 60,
 --    cmd = "date +'%A %Y-%m-%d %R'",
@@ -20,7 +29,13 @@ mytextclock = awful.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#
 --})
 
 -- Calendar
-lain.widget.calendar.attach(mytextclock, { font_size = 10 })
+local cal = lain.widget.calendar({
+    attach_to = { mytextclock },
+    notification_preset = {
+        fg   = theme.fg_normal,
+        bg   = theme.bg_normal
+    }
+})
 
 return {
   icon = clockicon,

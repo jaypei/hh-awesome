@@ -15,6 +15,7 @@ local hh_textclock    = require("hh.widget.clock")
 local hh_battery      = require("hh.widget.battery")
 local hh_volume       = require("hh.widget.volume")
 local hh_screen_num   = require("hh.widget.screen_num")
+local hh_widget_temp  = require("hh.widget.temp")
 
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
@@ -58,6 +59,8 @@ for s = 1, screen.count() do
     right_layout:add(hh_volume.widget)
     right_layout:add(hh_battery.icon)
     right_layout:add(hh_battery.widget)
+    right_layout:add(hh_widget_temp.icon)
+    right_layout:add(hh_widget_temp.widget)
     right_layout:add(hh_textclock.icon)
     right_layout:add(hh_textclock.widget)
 
