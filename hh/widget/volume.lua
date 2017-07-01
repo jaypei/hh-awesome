@@ -4,6 +4,7 @@ local markup    = require("hh.widget.markup").markup
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local config    = require("etc/config")
+local sexec     = require("hh.util").sexec
 
 blue   = beautiful.fg_focus
 red    = "#EB8F8F"
@@ -13,17 +14,6 @@ terminal = config.terminal
 
 volicon = wibox.widget.imagebox(beautiful.vol)
 volume = lain.widget.alsabar({width = 55, ticks = true, ticks_size = 6, step = "2%",
-settings = function()
-    if volume_now.status == "off" then
-        volicon:set_image(beautiful.vol_mute)
-    elseif volume_now.level == 0 then
-        volicon:set_image(beautiful.vol_no)
-    elseif volume_now.level <= 50 then
-        volicon:set_image(beautiful.vol_low)
-    else
-        volicon:set_image(beautiful.vol)
-    end
-end,
 colors =
 {
     background = beautiful.bg_normal,
@@ -35,6 +25,23 @@ volmargin:set_top(6)
 volmargin:set_bottom(6)
 volumewidget = wibox.container.background(volmargin)
 volumewidget:set_bgimage(beautiful.widget_bg)
+
+volumewidget:buttons(
+  awful.util.table.join(
+    awful.button({}, 1, function ()
+        sexec ("amixer sset Master toggle-mute >/dev/null")
+        sexec ("amixer sset Speaker unmute >/dev/null")
+        volume.update()
+    end),
+    awful.button({}, 4, function ()
+        sexec("amixer set Master 5%+ >/dev/null")
+        volume.update()
+    end),
+    awful.button({}, 5, function ()
+        sexec("amixer set Master 5%- >/dev/null")
+        volume.update()
+    end)))
+
 
 return {
   icon = volicon,

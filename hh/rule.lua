@@ -45,8 +45,7 @@ awful_rules.rules = {
       buttons = hh_keys.global_client_keys.buttons,
       size_hints_honor = false,
       screen = awful.screen.preferred,
-      raise = true,
-      placement = awful.placement.no_overlap+awful.placement.no_offscreen
+      raise = true
     }
   },
   -- urxvt

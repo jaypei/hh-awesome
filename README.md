@@ -5,13 +5,11 @@ Useful awesome wm config framework.
 
 # Dependency
 
-* awesome 3.5+
+* awesome 4.0+
 * rofi
-* deepin-screenshot
 * slock
 * alsa-utils
 * xclip
-
 
 # Usage
 
