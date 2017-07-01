@@ -43,7 +43,10 @@ awful_rules.rules = {
       focus = awful.client.focus.filter,
       keys = hh_keys.global_client_keys.keys,
       buttons = hh_keys.global_client_keys.buttons,
-      size_hints_honor = false
+      size_hints_honor = false,
+      screen = awful.screen.preferred,
+      raise = true,
+      placement = awful.placement.no_overlap+awful.placement.no_offscreen
     }
   },
   -- urxvt
