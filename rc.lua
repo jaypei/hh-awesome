@@ -17,6 +17,7 @@ require("hh.tag")
 require("hh.rule")
 require("hh.wibox")
 local hh_keys  = require("hh.keys")
+
 require("hh.signal")
 
 -- Load hhrc

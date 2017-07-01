@@ -9,6 +9,7 @@ local naughty = require("naughty")
 -- Coretemp
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local tempwidget = lain.widget.temp({
+    tempfile = "/sys/class/thermal/thermal_zone1/temp",
     settings = function()
         widget:set_markup(markup.font(theme.font, coretemp_now .. "°C "))
     end
