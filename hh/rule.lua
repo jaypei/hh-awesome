@@ -64,7 +64,7 @@ awful_rules.rules = {
   {
     rule_any = { class = {
                    "desktop_window", "MPlayer", "pinentry", "rdesktop",
-                   "deepin-music-player", "Deepin-music-player"
+                   "netease-cloud-music"
                }},
     properties = { floating = true }
   },
@@ -77,8 +77,7 @@ awful_rules.rules = {
   {
     rule_any = { class = { "QunarIM" } },
     properties = {
-      floating = false,
-      border_width = 0
+      floating = false
     },
     callback = make_move_client_tag(4)
   },
@@ -102,18 +101,19 @@ awful_rules.rules = {
     },
     callback = awful_placement.centered
   },
-  -- wechat
   {
-    rule_any = { class = { "electronic-wechat" } },
+    rule_any = { class = {
+                   "electronic-wechat", "netease-cloud-music",
+                   "AliWangWang"
+               } },
     properties = {
       floating = false,
-      border_width = 0
+      border_width = 10
     },
     callback = make_move_client_tag(5)
   },
-  -- aliwangwang
   {
-    rule = { class = "AliWangWang" },
+    rule = { instance = "crx_diankknpkndanachmlckaikddgcehkod" },
     callback = make_move_client_tag(5)
   },
   -- virtualbox
@@ -133,8 +133,6 @@ awful_rules.rules = {
   -- web browser
   {
     rule_any = { class = { "Firefox", "Chromium-browser", "Google-chrome", "google-chrome" } },
-    properties = { maximized_horizontal  = false,
-                   maximized_vertical    = false },
     callback = make_move_client_tag(9)
   },
   {
