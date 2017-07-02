@@ -162,5 +162,21 @@ awful_rules.rules = {
   {
     rule = { role = "GtkFileChooserDialog" },
     callback = awful_placement.centered
+  },
+  -- Goldendict
+  {
+    rule = { instance = "goldendict" },
+    properties = {
+      honor_padding = 10,
+      floating = true
+    },
+    callback = function (c)
+      local lscreen = mouse.screen
+      c.width = lscreen.geometry.width / 2
+      c.height = lscreen.geometry.height / 2
+      awful_placement.centered(c)
+      c.ontop = true
+
+    end
   }
 }

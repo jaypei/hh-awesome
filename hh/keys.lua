@@ -187,10 +187,22 @@ global_keys:def_key({ modkey }, "w", function ()
     gexec("rofi -show window")
 end)
 global_keys:def_key({ modkey }, "e", function (c)
-    gexec(config.gui_editor)
+    gexec(config.file_explorer)
 end)
+-- GoldenDict
 global_client_keys:def_key({ modkey }, "t", function (c)
-    util.clip_translate("sdcv")
+    local find_golden_dict = function (c)
+      return awful.rules.match(
+        c, {
+          instance = "goldendict",
+          class = "Goldendict"
+      })
+    end
+    for c in awful.client.iterate(find_golden_dict) do
+      c:kill()
+      return
+    end
+    gexec("goldendict")
 end)
 global_client_keys:def_key({ modkey, "Shift" }, "t", function (c)
     util.clip_translate("ydcv")
@@ -200,9 +212,7 @@ global_keys:def_key({ modkey }, "Return", function ()
     exec(config.terminal)
 end)
 global_keys:def_key({ modkey }, "a", function ()
-    --gexec("deepin-screenshot")
-    --gexec("gscreenshot")
-    sexec("gnome-screenshot -c -a")
+    sexec("qsnip")
 end)
 global_keys:def_key({ modkey          }, "r", function () util.show_rofi(true) end)
 global_keys:def_key({ modkey, "Shift" }, "r", function () util.show_rofi(false) end)

@@ -10,6 +10,7 @@ Useful awesome wm config framework.
 * slock
 * alsa-utils
 * xclip
+* goldendict
 
 # Usage
 
