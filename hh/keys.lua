@@ -191,25 +191,10 @@ global_keys:def_key({ modkey }, "e", function (c)
 end)
 -- GoldenDict
 global_client_keys:def_key({ altkey }, "space", function (c)
-    -- kill dicts
-    local find_golden_dict = function (c)
-      return awful.rules.match(
-        c, {
-          instance = "goldendict",
-          class = "Goldendict"
-      })
-    end
-    for c in awful.client.iterate(find_golden_dict) do
-      c:kill()
-      return
-    end
-    -- open dict
-    awful.spawn.easy_async("xsel -o", function(stdout, stderr, reason, exit_code)
-        gexec("goldendict " .. stdout)
-    end)
+    util.clip_translate()
 end)
-global_client_keys:def_key({ modkey, "Shift" }, "t", function (c)
-    util.clip_translate("ydcv")
+global_client_keys:def_key({ modkey,  }, "t", function (c)
+    util.clip_translate()
 end)
 global_keys:def_key({ modkey }, "q", function () util.lock_screen() end)
 global_keys:def_key({ modkey }, "Return", function ()

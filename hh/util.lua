@@ -3,6 +3,7 @@
 -- github.com/jaypei/hh-awesome
 --
 
+local string  = string
 local G       = _G
 local class   = require("middleclass/middleclass")
 local awful   = require("awful")
@@ -23,7 +24,7 @@ end
 function dir_exists(path)
     local f = G.io.open(path, "r")
     if f == nil then
-	    return false
+      return false
     end
     local ok, err, code = f:read(1)
     f:close()
@@ -59,16 +60,24 @@ function gexec(cmd)
   exec(exec_cmd)
 end
 
-function clip_translate(tool)
-    local clip = nil
-    clip = awful.util.pread("xclip -o")
-    if clip then
-      awful.util.spawn(
-        config.dotfile_dir .. "/bin/trans.sh " ..
-          "\"" .. tool .. "\" " ..
-          "\"" .. clip .. "\"",
-        false)
+function clip_translate()
+    -- kill dicts
+    local find_golden_dict = function (c)
+      return awful.rules.match(
+        c, {
+          instance = "goldendict",
+          class = "Goldendict"
+      })
     end
+    for c in awful.client.iterate(find_golden_dict) do
+      c:kill()
+      return
+    end
+    -- open dict
+    awful.spawn.easy_async("xsel -o", function(stdout, stderr, reason, exit_code)
+        local escaped_out, _ = string.gsub(string.gsub(stdout, "'", ""), '"', '\\\"')
+        gexec("goldendict '" .. escaped_out .. "'")
+    end)
 end
 
 function lock_screen()
