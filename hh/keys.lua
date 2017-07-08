@@ -190,7 +190,8 @@ global_keys:def_key({ modkey }, "e", function (c)
     gexec(config.file_explorer)
 end)
 -- GoldenDict
-global_client_keys:def_key({ modkey }, "t", function (c)
+global_client_keys:def_key({ altkey }, "space", function (c)
+    -- kill dicts
     local find_golden_dict = function (c)
       return awful.rules.match(
         c, {
@@ -202,7 +203,10 @@ global_client_keys:def_key({ modkey }, "t", function (c)
       c:kill()
       return
     end
-    gexec("goldendict")
+    -- open dict
+    awful.spawn.easy_async("xsel -o", function(stdout, stderr, reason, exit_code)
+        gexec("goldendict " .. stdout)
+    end)
 end)
 global_client_keys:def_key({ modkey, "Shift" }, "t", function (c)
     util.clip_translate("ydcv")
