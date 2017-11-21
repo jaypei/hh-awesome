@@ -22,6 +22,7 @@ Useful awesome wm config framework.
 
 1. Setup .Xresources (optional)
 
+        cd ~/.config/awesome
         ln -s $(pwd)/etc/Xresources ~/.Xresources
         xrdb !$
 

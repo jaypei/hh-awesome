@@ -178,5 +178,18 @@ awful_rules.rules = {
       c.ontop = true
 
     end
+  },
+  -- Nautilus: desktop_window
+  {
+    rule = { class = "Nautilus", instance = "desktop_window" },
+    properties = {
+      maximized_vertical = true,
+      maximized_horizontal = true,
+      focus = nil,
+    },
+    callback = function (c)
+      c.border_width = 0
+      -- c.focusable = false
+    end
   }
 }
