@@ -31,3 +31,7 @@ for s = 1, screen.count() do
   tags[s] = awful.tag(l_tags.names, s, l_tags.layout)
   screen[s].padding = config.screen_padding
 end
+
+return {
+	layouts = layouts
+}
