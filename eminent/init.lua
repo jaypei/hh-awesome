@@ -17,7 +17,7 @@ local capi   = {
 }
 
 -- Eminent: Effortless wmii-style dynamic tagging
-module("eminent")
+--module("eminent")
 
 -- Grab the original functions we're replacing
 local deflayout = nil

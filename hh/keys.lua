@@ -22,7 +22,7 @@ local exec    = util.exec
 local gexec   = util.gexec
 local sexec   = util.sexec
 
-module("hh.keys")
+--module("hh.keys")
 
 --------------------------------------------------
 -- key-maps
@@ -219,3 +219,8 @@ global_keys:def_key({ modkey }, "b", function ()
     hh_wibox.my_bot_wibox[mouse.screen].visible =
       not hh_wibox.my_bot_wibox[mouse.screen].visible
 end)
+
+return {
+    global_keys = global_keys,
+    global_client_keys = global_client_keys
+}

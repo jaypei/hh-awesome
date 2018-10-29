@@ -4,7 +4,7 @@ local wibox      = require("wibox")
 local lain_util  = require("lain.util")
 local config     = require("etc/config")
 
-module("hh.signal")
+--module("hh.signal")
 
 function auto_focus_on_mouse_enter(c)
   c:connect_signal("mouse::enter", function(c)
