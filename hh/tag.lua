@@ -8,7 +8,7 @@ local lain    = require("lain")
 local config  = require("etc/config")
 local hh_layout = require("hh/layout")
 
-module("hh.tag")
+--module("hh.tag")
 
 -- Window management layouts
 layouts = {

@@ -12,7 +12,7 @@ local config  = require("etc/config")
 local lain    = require("lain")
 lain.helpers  = require("lain.helpers")
 
-module("hh.util")
+--module("hh.util")
 
 --------------------------------------------------
 -- File System
@@ -120,3 +120,18 @@ function KeyMap:reg_key_map(key_map, key_def)
     end
   end
 end
+
+local util = {
+    exec = exec,
+    file_exists = file_exists,
+    dir_exists = dir_exists,
+    run_once = run_once,
+    gexec = gexec,
+    clip_translate = clip_translate,
+    lock_screen= lock_screen,
+    show_rofi = show_rofi,
+    sexec = awful.spawn.with_shell,
+    KeyMap = KeyMap
+}
+
+return util

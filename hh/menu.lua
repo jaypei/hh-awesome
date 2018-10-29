@@ -1,10 +1,10 @@
-local awesome = require("awesome")
+--local awesome = require("awesome")
 local awful   = require("awful")
 awful.menu    = require("awful.menu")
 local menugen = require("menugen")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
-module("hh.menu")
+--module("hh.menu")
 
 main = awful.menu({
     items = {

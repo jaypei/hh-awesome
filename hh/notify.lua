@@ -2,7 +2,7 @@ local awesome = awesome
 local screen  = screen
 local naughty = require("naughty")
 
-module("hh.notify")
+--module("hh.notify")
 
 -- naughty config
 -- naughty.config.defaults.screen = config.main_screen
@@ -59,3 +59,12 @@ function setup_runtime_errors_handler ()
     )
   end
 end
+
+
+
+local notify = {
+        setup_runtime_errors_handler = setup_runtime_errors_handler,
+}
+
+return notify
+

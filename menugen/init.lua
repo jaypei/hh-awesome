@@ -14,7 +14,7 @@ local table      = table
 local string     = string
 local next       = next
 
-module("menugen")
+--module("menugen")
 
 -- Built in menubar should be checking local applications directory
 -- menu_gen.all_menu_dirs = { '/usr/share/applications/', '/usr/local/share/applications/', '~/.local/share/applications' }
@@ -63,3 +63,7 @@ function build_menu()
 
 	return result
 end
+
+return {
+    build_menu = build_menu
+}

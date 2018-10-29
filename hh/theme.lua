@@ -13,7 +13,7 @@ local theme        = "steamburn"
 local util         = require("hh.util")
 local naughty      = require("naughty")
 
-module("hh.theme")
+--module("hh.theme")
 
 local custom_wallpaper = config.hh_dotfile_dir .. "/awesome/wall.png"
 
@@ -34,7 +34,7 @@ end
 -- No border for maximized clients
 client.connect_signal("focus",
     function(c)
-        if c.maximized_horizontal == true and c.maximized_vertical == true then
+	if c.maximized_horizontal == true and c.maximized_vertical == true then
             c.border_color = beautiful.border_normal
         else
             c.border_color = beautiful.border_focus
