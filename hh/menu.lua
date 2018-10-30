@@ -14,3 +14,7 @@ main = awful.menu({
       { "quit", function() awesome.quit() end}
     },
     theme = { height = 20, width = 130 }})
+
+return {
+	main= main
+}

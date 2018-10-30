@@ -5,6 +5,7 @@ Useful awesome wm config framework.
 
 # Dependency
 
+* xsel
 * awesome 4.0+
 * rofi
 * slock
