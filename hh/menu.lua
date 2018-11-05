@@ -1,4 +1,4 @@
-local awesome = require("awesome")
+local awesome = awesome
 local awful   = require("awful")
 awful.menu    = require("awful.menu")
 local menugen = require("menugen")

@@ -36,7 +36,7 @@ for s = 1, screen.count() do
 
     -- TOP
     my_top_wibox[s] = awful.wibar({
-        position = "top", screen = s, height = 18,
+        position = "top", screen = s, height = 20,
         border_width = beautiful.wibox_border_width,
         border_color = beautiful.wibox_border
     })

@@ -15,6 +15,13 @@ lain.helpers  = require("lain.helpers")
 module("hh.util")
 
 --------------------------------------------------
+-- String System
+--------------------------------------------------
+function string_trim(s)
+  return string.match(s,'^()%s*$') and '' or string.match(s,'^%s*(.*%S)')
+end
+
+--------------------------------------------------
 -- File System
 --------------------------------------------------
 function file_exists(path)
@@ -63,10 +70,10 @@ end
 function clip_translate()
     -- kill dicts
     local find_golden_dict = function (c)
-      return awful.rules.match(
+      return awful.rules.match_any(
         c, {
           instance = "goldendict",
-          class = "Goldendict"
+          class = { "GoldenDict", "Goldendict" }
       })
     end
     for c in awful.client.iterate(find_golden_dict) do
@@ -76,6 +83,7 @@ function clip_translate()
     -- open dict
     awful.spawn.easy_async("xsel -o", function(stdout, stderr, reason, exit_code)
         local escaped_out, _ = string.gsub(string.gsub(stdout, "'", ""), '"', '\\\"')
+	escaped_out = string_trim(escaped_out)
         gexec("goldendict '" .. escaped_out .. "'")
     end)
 end

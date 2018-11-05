@@ -9,7 +9,7 @@ return {
   altkey          = "Mod1",
   exec_term       = "/bin/bash -c",
   terminal        = "urxvt",
-  file_explorer   = "nautilus -w --no-desktop",
+  file_explorer   = "nautilus -w -n",
   editor          = os.getenv("EDITOR") or "emacs -nw",
   gui_editor      = "emacs",
   browser         = "dwb",
