@@ -125,4 +125,10 @@ theme.naughty_critical_fg           = "#cfffff"
 theme.naughty_critical_bg           = "#770000"
 theme.naughty_critical_border_color = border_focus_color
 
+
+-- beautiful
+theme.notification_font             = "Source Code Pro 8"
+theme.notification_max_width        = 400
+theme.notification_max_height       = 150
+
 return theme
