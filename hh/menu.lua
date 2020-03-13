@@ -10,7 +10,7 @@ main = awful.menu({
     items = {
       { "applications", menugen.build_menu() },
       { "hotkeys", function() return false, hotkeys_popup.show_help end},
-      { "restart", awesome.restart },
-      { "quit", function() awesome.quit() end}
+      { "restart", awesome.restart }
+      -- { "quit", function() awesome.quit() end}
     },
     theme = { height = 20, width = 130 }})

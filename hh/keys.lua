@@ -196,6 +196,9 @@ end)
 global_client_keys:def_key({ modkey,  }, "t", function (c)
     util.clip_translate()
 end)
+global_client_keys:def_key({ modkey,  }, "b", function (c)
+    scratch.drop("pavucontrol", "center", "center", 0.5, 0.5, true)
+end)
 global_keys:def_key({ modkey }, "q", function () util.lock_screen() end)
 global_keys:def_key({ modkey }, "Return", function ()
     exec(config.terminal)
@@ -210,12 +213,4 @@ global_keys:def_key({ modkey }, "z", function ()
 end)
 global_keys:def_key({ modkey }, "s", function ()
     scratch.drop(config.file_explorer, "center", "center", 0.8, 0.8, true)
-end)
-
--- Show/Hide Wibox
-global_keys:def_key({ modkey }, "b", function ()
-    hh_wibox.my_top_wibox[mouse.screen].visible =
-      not hh_wibox.my_top_wibox[mouse.screen].visible
-    hh_wibox.my_bot_wibox[mouse.screen].visible =
-      not hh_wibox.my_bot_wibox[mouse.screen].visible
 end)

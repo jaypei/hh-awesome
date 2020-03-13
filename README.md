@@ -11,6 +11,7 @@ Useful awesome wm config framework.
 * alsa-utils
 * xclip
 * goldendict
+* pavucontrol
 
 # Usage
 
