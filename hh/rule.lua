@@ -16,7 +16,6 @@ local awful_placement = require("awful.placement")
 local hh_keys   = require("hh.keys")
 local hh_tag    = require("hh.tag")
 
-module("hh.rule")
 local rules = {}
 local scount = screen.count()
 

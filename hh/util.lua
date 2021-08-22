@@ -12,7 +12,14 @@ local config  = require("etc/config")
 local lain    = require("lain")
 lain.helpers  = require("lain.helpers")
 
-module("hh.util")
+function make_module()
+  local _Mod = {}
+  _Mod._Mod = _Mod
+  return _Mod
+end
+
+local _M = make_module()
+_M.make_module = make_module
 
 --------------------------------------------------
 -- String System
@@ -20,13 +27,21 @@ module("hh.util")
 function string_trim(s)
   return string.match(s,'^()%s*$') and '' or string.match(s,'^%s*(.*%S)')
 end
+_M.string_trim = string_trim
 
 --------------------------------------------------
 -- File System
 --------------------------------------------------
 function file_exists(path)
-  return lain.helpers.file_exists(path)
+  local f = io.open(path)
+  if f then
+      local s = f:read()
+      f:close()
+      f = s
+  end
+  return f ~= nil
 end
+_M.file_exists = file_exists
 
 function dir_exists(path)
     local f = G.io.open(path, "r")
@@ -37,6 +52,7 @@ function dir_exists(path)
     f:close()
     return code == 21
 end
+_M.dir_exists = dir_exists
 
 --------------------------------------------------
 -- Execute functions
@@ -47,8 +63,8 @@ awful.util.spawn = function (s)
   oldspawn(s, false)
 end
 
-exec  = function (s) oldspawn(s, false) end
-sexec = awful.spawn.with_shell
+_M.exec  = function (s) oldspawn(s, false) end
+_M.sexec = awful.spawn.with_shell
 
 function run_once(cmd)
   local findme = cmd
@@ -56,18 +72,20 @@ function run_once(cmd)
   if firstspace then
     findme = cmd:sub(0, firstspace-1)
   end
-  awful.spawn.with_shell("pgrep -u $USER -x " .. findme ..
-                         " > /dev/null || (" .. cmd .. ")")
+  awful.spawn.with_shell(
+    "pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
+_M.run_once = run_once
 
 function gexec(cmd)
   local exec_cmd = config.exec_term ..
     " \"[ -x $HOME/.profile ] && source $HOME/.profile; " ..
     cmd .. "\""
-  exec(exec_cmd)
+  _M.exec(exec_cmd)
 end
+_M.gexec = gexec
 
-function clip_translate()
+function _M.clip_translate()
     -- kill dicts
     local find_golden_dict = function (c)
       return awful.rules.match_any(
@@ -88,13 +106,13 @@ function clip_translate()
     end)
 end
 
-function lock_screen()
+function _M.lock_screen()
   awful.util.spawn(config.dotfile_dir .. "/bin/lock-screen.sh")
 end
 
-function show_rofi(from_binutils)
+function _M.show_rofi(from_binutils)
   local binutils_dir = config.hh_dotfile_dir .. "/binutils"
-  if from_binutils and dir_exists(binutils_dir) then
+  if from_binutils and _M.dir_exists(binutils_dir) then
     gexec(config.dotfile_dir .. "/bin/show-rofi.sh '" .. binutils_dir .. "'")
   else
     gexec(config.dotfile_dir .. "/bin/show-rofi.sh")
@@ -104,22 +122,22 @@ end
 --------------------------------------------------
 -- KeyMap
 --------------------------------------------------
-KeyMap = class('Key')
+_M.KeyMap = class('Key')
 
-function KeyMap:initialize(sweetness)
+function _M.KeyMap:initialize(sweetness)
   self.keys = {}
   self.buttons = {}
 end
 
-function KeyMap:def_btn(mod_key, btn, fn)
+function _M.KeyMap:def_btn(mod_key, btn, fn)
   self:reg_key_map(self.buttons, awful.button(mod_key, btn, fn))
 end
 
-function KeyMap:def_key(mod_key, key, fn)
+function _M.KeyMap:def_key(mod_key, key, fn)
   self:reg_key_map(self.keys, awful.key(mod_key, key, fn))
 end
 
-function KeyMap:reg_key_map(key_map, key_def)
+function _M.KeyMap:reg_key_map(key_map, key_def)
   for k, v in G.pairs(key_def) do
     if G.type(k) == "number" then
       G.table.insert(key_map, v)
@@ -128,3 +146,5 @@ function KeyMap:reg_key_map(key_map, key_def)
     end
   end
 end
+
+return _M

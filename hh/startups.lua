@@ -2,8 +2,6 @@
 local util    = require("hh.util")
 local config  = require("etc/config")
 
-module("hh.startups")
-
 local compton_conf_path = config.dotfile_dir .. "/etc/compton.conf"
 local compton_conf_path_hh = config.hh_dotfile_dir .. "/awesome/compton.conf"
 if util.file_exists(compton_conf_path_hh) then

@@ -16,9 +16,6 @@ local capi   = {
     screen = screen,
 }
 
--- Eminent: Effortless wmii-style dynamic tagging
-module("eminent")
-
 -- Grab the original functions we're replacing
 local deflayout = nil
 local orig = {

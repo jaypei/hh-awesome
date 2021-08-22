@@ -8,13 +8,14 @@
 local print      = print
 local menu_gen   = require("menubar.menu_gen")
 local menu_utils = require("menubar.utils")
+local util       = require("hh.util")
 local pairs      = pairs
 local ipairs     = ipairs
 local table      = table
 local string     = string
 local next       = next
 
-module("menugen")
+local _M = util.make_module()
 
 -- Built in menubar should be checking local applications directory
 -- menu_gen.all_menu_dirs = { '/usr/share/applications/', '/usr/local/share/applications/', '~/.local/share/applications' }
@@ -25,7 +26,7 @@ menu_utils.wm_name = ""
 
 -- Use MenuBar Parsing Utils to build StartMenu for Awesome
 -- @return awful.menu compliant menu items tree
-function build_menu()
+function _M.build_menu()
 	local result = {}
 	local menulist = menu_gen.generate(function()
 	end)
@@ -63,3 +64,5 @@ function build_menu()
 
 	return result
 end
+
+return _M

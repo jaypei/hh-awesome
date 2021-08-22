@@ -3,15 +3,16 @@ local awful      = require("awful")
 local wibox      = require("wibox")
 local lain_util  = require("lain.util")
 local config     = require("etc/config")
+local util       = require("hh.util")
 
-module("hh.signal")
+local _M = util.make_module()
 
-function auto_focus_on_mouse_enter(c)
+function _M.auto_focus_on_mouse_enter(c)
   c:connect_signal("mouse::enter", function(c)
-                     if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-                     and awful.client.focus.filter(c) then
-                       client.focus = c
-                     end
+                    if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+                      and awful.client.focus.filter(c) then
+                        client.focus = c
+                    end
   end)
 end
 
@@ -80,3 +81,5 @@ client.connect_signal(
   "unfocus", function (c)
     --lain_util.niceborder_unfocus(c)
 end)
+
+return _M

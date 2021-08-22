@@ -13,8 +13,6 @@ local theme        = "steamburn"
 local util         = require("hh.util")
 local naughty      = require("naughty")
 
-module("hh.theme")
-
 local custom_wallpaper = config.hh_dotfile_dir .. "/awesome/wall.png"
 
 -- beautiful init

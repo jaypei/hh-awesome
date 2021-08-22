@@ -22,13 +22,16 @@ local exec    = util.exec
 local gexec   = util.gexec
 local sexec   = util.sexec
 
-module("hh.keys")
+local _M = util.make_module()
 
 --------------------------------------------------
 -- key-maps
 --------------------------------------------------
 global_keys = util.KeyMap:new()
 global_client_keys = util.KeyMap:new()
+
+_M.global_keys = global_keys
+_M.global_client_keys = global_client_keys
 
 --------------------------------------------------
 -- Mouse buttons
@@ -214,3 +217,5 @@ end)
 global_keys:def_key({ modkey, "Shift" }, "s", function ()
     scratch.drop(config.file_explorer, "center", "center", 0.8, 0.8, true)
 end)
+
+return _M
